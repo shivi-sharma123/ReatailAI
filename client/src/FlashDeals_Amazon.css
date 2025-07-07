@@ -1,0 +1,1274 @@
+/* Walmart Live Deals Section - Walmart Style */
+.flash-deals-section {
+  background: white;
+  padding: 0;
+  margin: 0;
+  font-family: "Bogle", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Walmart Live Header */
+.amazon-live-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.amazon-live-banner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  max-width: 1200px;
+}
+
+.amazon-live-logo {
+  background: #0071ce;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.amazon-text {
+  text-transform: lowercase;
+}
+
+.live-text {
+  margin-left: 4px;
+  font-weight: normal;
+}
+
+.amazon-live-content h2 {
+  color: #0071ce;
+  font-size: 24px;
+  margin: 0 0 4px 0;
+  font-weight: normal;
+}
+
+.amazon-live-content p {
+  color: #565959;
+  font-size: 14px;
+  margin: 0 0 8px 0;
+}
+
+.amazon-live-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.amazon-live-links a {
+  color: #0071ce;
+  text-decoration: none;
+}
+
+.amazon-live-links a:hover {
+  color: #004c91;
+  text-decoration: underline;
+}
+
+/* Results Section */
+.results-section {
+  padding: 16px 20px;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.results-section h3 {
+  font-size: 28px;
+  color: #0f1111;
+  margin: 0 0 8px 0;
+  font-weight: normal;
+}
+
+.results-section p {
+  font-size: 14px;
+  color: #565959;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Amazon Deals Container */
+.amazon-deals-container {
+  padding: 16px 20px;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+.amazon-deals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+  max-width: 100%;
+}
+
+/* Amazon Deal Card - Exact Amazon Style */
+.amazon-deal-card {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.amazon-deal-card:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
+}
+
+/* Sponsored Badge */
+.sponsored-badge {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: #565959;
+  margin-bottom: 8px;
+}
+
+.info-icon {
+  background: #565959;
+  color: white;
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+}
+
+/* Product Image */
+.amazon-image-container {
+  text-align: center;
+  margin-bottom: 12px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.amazon-product-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* Product Title */
+.amazon-product-title {
+  font-size: 16px;
+  color: #0071ce;
+  margin: 0 0 8px 0;
+  font-weight: normal;
+  line-height: 1.3;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+.amazon-product-title:hover {
+  color: #004c91;
+  text-decoration: underline;
+}
+
+/* Rating Section */
+.amazon-rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.stars {
+  color: #ff9900;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.rating-count {
+  color: #0071ce;
+  font-size: 14px;
+}
+
+.rating-count:hover {
+  color: #004c91;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Purchase Count */
+.purchase-count {
+  font-size: 14px;
+  color: #565959;
+  margin-bottom: 8px;
+}
+
+/* Limited Time Deal Badge */
+.limited-deal-badge {
+  background: #cc0c39;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 2px;
+  display: inline-block;
+  margin-bottom: 8px;
+  width: fit-content;
+}
+
+/* Price Section - Exact Amazon Style */
+.amazon-price-section {
+  margin-bottom: 12px;
+}
+
+.price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.currency {
+  font-size: 14px;
+  color: #0f1111;
+  vertical-align: top;
+}
+
+.main-price {
+  font-size: 24px;
+  color: #0f1111;
+  font-weight: normal;
+}
+
+.mrp-text {
+  font-size: 14px;
+  color: #565959;
+  margin-left: 8px;
+}
+
+.original-price {
+  font-size: 14px;
+  color: #565959;
+  text-decoration: line-through;
+}
+
+.discount-percent {
+  font-size: 14px;
+  color: #565959;
+}
+
+/* Additional Info */
+.amazon-additional-info {
+  margin-top: auto;
+}
+
+.prime-badge {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #0071ce;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.prime-icon {
+  background: #0071ce;
+  color: white;
+  border-radius: 2px;
+  padding: 2px 4px;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.delivery-info {
+  font-size: 14px;
+  color: #0f1111;
+  font-weight: bold;
+}
+
+/* Live Tracking Section - Enhanced Beautiful Design */
+.live-tracking-section {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  margin-top: 2rem;
+  border-top: 4px solid #0071ce;
+  position: relative;
+  overflow: hidden;
+}
+
+.live-tracking-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(0, 113, 206, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(0, 113, 206, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+  animation: backgroundShimmer 8s ease-in-out infinite;
+}
+
+@keyframes backgroundShimmer {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* Enhanced Tracking Header */
+.tracking-header {
+  padding: 24px 20px;
+  background: linear-gradient(135deg, #0071ce 0%, #004c91 100%);
+  border-bottom: 1px solid #e7e7e7;
+  position: relative;
+  overflow: hidden;
+}
+
+.tracking-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  animation: headerShine 3s infinite;
+}
+
+@keyframes headerShine {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+.tracking-banner {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  max-width: 1200px;
+  position: relative;
+  z-index: 2;
+}
+
+.tracking-logo {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  color: #0071ce;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 16px;
+  box-shadow: 
+    0 8px 25px rgba(0, 0, 0, 0.15),
+    inset 0 1px 2px rgba(255, 255, 255, 0.8);
+  animation: logoGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes logoGlow {
+  0% { box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15), inset 0 1px 2px rgba(255, 255, 255, 0.8); }
+  100% { box-shadow: 0 12px 35px rgba(0, 113, 206, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.9); }
+}
+
+.walmart-text {
+  text-transform: lowercase;
+  font-weight: 900;
+}
+
+.tracking-content h2 {
+  color: white;
+  font-size: 28px;
+  margin: 0 0 8px 0;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.tracking-content p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 16px;
+  margin: 0 0 12px 0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.tracking-links {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+}
+
+.tracking-links a {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.tracking-links a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Enhanced Quick Track Section */
+.quick-track-section {
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  border-bottom: 1px solid #e7e7e7;
+  text-align: center;
+  position: relative;
+}
+
+.quick-track-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 50% 50%, rgba(0, 113, 206, 0.02) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.quick-track-section h3 {
+  font-size: 24px;
+  color: #0f1111;
+  margin: 0 0 12px 0;
+  font-weight: 600;
+  position: relative;
+  z-index: 2;
+}
+
+.quick-track-section p {
+  font-size: 16px;
+  color: #565959;
+  margin: 0 0 32px 0;
+  position: relative;
+  z-index: 2;
+}
+
+.tracking-input-container {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.tracking-input {
+  flex: 1;
+  padding: 16px 20px;
+  border: 3px solid #e9ecef;
+  border-radius: 16px;
+  font-size: 16px;
+  outline: none;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: white;
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.05),
+    inset 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.tracking-input:focus {
+  border-color: #0071ce;
+  transform: translateY(-2px);
+  box-shadow: 
+    0 8px 25px rgba(0, 113, 206, 0.15),
+    0 0 0 4px rgba(0, 113, 206, 0.1),
+    inset 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.tracking-input::placeholder {
+  color: #a0a0a0;
+  font-style: italic;
+}
+
+.track-button {
+  background: linear-gradient(135deg, #0071ce 0%, #004c91 100%);
+  color: white;
+  border: none;
+  padding: 16px 32px;
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 
+    0 8px 25px rgba(0, 113, 206, 0.3),
+    inset 0 1px 2px rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.track-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.track-button:hover::before {
+  left: 100%;
+}
+
+.track-button:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 
+    0 12px 35px rgba(0, 113, 206, 0.4),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+.track-button:active {
+  transform: translateY(-2px) scale(1.02);
+}
+
+.track-icon {
+  font-size: 20px;
+  animation: searchPulse 2s ease-in-out infinite;
+}
+
+@keyframes searchPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* Enhanced Live Orders Container */
+.live-orders-container {
+  padding: 40px 20px;
+  max-width: 1500px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.live-orders-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 24px;
+}
+
+/* Enhanced Live Order Card */
+.live-order-card {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  border: 2px solid transparent;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.1),
+    0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.live-order-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(0, 113, 206, 0.02) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.live-order-card:hover::before {
+  opacity: 1;
+}
+
+.live-order-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: #0071ce;
+  box-shadow: 
+    0 20px 50px rgba(0, 113, 206, 0.15),
+    0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Enhanced Order Status Badge */
+.order-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 25px;
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+}
+
+.order-status-badge::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  animation: badgeShine 3s infinite;
+}
+
+@keyframes badgeShine {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+.order-status-badge.in-transit {
+  background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+  color: #856404;
+  border: 2px solid #f39c12;
+  box-shadow: 0 4px 15px rgba(243, 156, 18, 0.2);
+}
+
+.order-status-badge.delivered {
+  background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+  color: #155724;
+  border: 2px solid #28a745;
+  box-shadow: 0 4px 15px rgba(40, 167, 69, 0.2);
+}
+
+.order-status-badge.processing {
+  background: linear-gradient(135deg, #d1ecf1 0%, #bee5eb 100%);
+  color: #0c5460;
+  border: 2px solid #17a2b8;
+  box-shadow: 0 4px 15px rgba(23, 162, 184, 0.2);
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: statusPulse 2s infinite;
+  box-shadow: 0 0 8px currentColor;
+}
+
+@keyframes statusPulse {
+  0%, 100% { 
+    opacity: 1; 
+    transform: scale(1);
+    box-shadow: 0 0 8px currentColor;
+  }
+  50% { 
+    opacity: 0.6; 
+    transform: scale(1.2);
+    box-shadow: 0 0 16px currentColor;
+  }
+}
+
+/* Enhanced Order Info */
+.order-info h4 {
+  font-size: 20px;
+  color: #0071ce;
+  margin: 0 0 10px 0;
+  font-weight: 700;
+  transition: color 0.3s ease;
+}
+
+.live-order-card:hover .order-info h4 {
+  color: #004c91;
+}
+
+.order-items {
+  font-size: 15px;
+  color: #565959;
+  margin: 0 0 20px 0;
+  line-height: 1.4;
+}
+
+/* Enhanced Tracking Progress */
+.tracking-progress {
+  margin-bottom: 20px;
+}
+
+.progress-bar {
+  background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+  border-radius: 12px;
+  height: 12px;
+  overflow: hidden;
+  margin-bottom: 10px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.progress-bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 25%, rgba(255,255,255,0.1) 25%, rgba(255,255,255,0.1) 50%, transparent 50%, transparent 75%, rgba(255,255,255,0.1) 75%);
+  background-size: 20px 20px;
+  animation: progressStripes 1s linear infinite;
+}
+
+@keyframes progressStripes {
+  0% { background-position: 0 0; }
+  100% { background-position: 20px 0; }
+}
+
+.progress-fill {
+  background: linear-gradient(135deg, #0071ce 0%, #004c91 50%, #0071ce 100%);
+  height: 100%;
+  border-radius: 12px;
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    0 0 10px rgba(0, 113, 206, 0.3),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+.progress-fill.completed {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 50%, #28a745 100%);
+  box-shadow: 
+    0 0 10px rgba(40, 167, 69, 0.3),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+.progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  animation: progressShimmer 2s infinite;
+}
+
+@keyframes progressShimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+.progress-text {
+  font-size: 13px;
+  color: #565959;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+/* Enhanced Estimated Delivery */
+.estimated-delivery {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  color: #0f1111;
+  font-weight: 600;
+  margin-bottom: 20px;
+  padding: 10px 0;
+  border-left: 4px solid #0071ce;
+  padding-left: 12px;
+  background: linear-gradient(90deg, rgba(0, 113, 206, 0.05) 0%, transparent 100%);
+  border-radius: 0 8px 8px 0;
+}
+
+.delivery-icon {
+  font-size: 18px;
+  animation: deliveryBounce 2s ease-in-out infinite;
+}
+
+@keyframes deliveryBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+/* Enhanced View Details Button */
+.view-details-btn {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  color: #0071ce;
+  border: 2px solid #0071ce;
+  padding: 14px 24px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.view-details-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 113, 206, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+
+.view-details-btn:hover::before {
+  left: 100%;
+}
+
+.view-details-btn:hover {
+  background: linear-gradient(135deg, #0071ce 0%, #004c91 100%);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 
+    0 8px 25px rgba(0, 113, 206, 0.3),
+    0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Professional Footer - Amazon/Flipkart Style */
+.walmart-footer {
+  background: #232f3e;
+  color: #ffffff;
+  margin-top: 3rem;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Main Footer Content */
+.footer-main {
+  background: #232f3e;
+  padding: 40px 0;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Footer Grid */
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer-column h3 {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #0071ce;
+  display: inline-block;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column li {
+  margin-bottom: 8px;
+}
+
+.footer-column a {
+  color: #cccccc;
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  display: inline-block;
+  padding: 4px 0;
+}
+
+.footer-column a:hover {
+  color: #0071ce;
+  padding-left: 8px;
+  transform: translateX(4px);
+}
+
+/* Footer Divider */
+.footer-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #444444, transparent);
+  margin: 30px 0;
+}
+
+/* Footer Services */
+.footer-services {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+  margin-bottom: 30px;
+}
+
+.service-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  background: linear-gradient(135deg, #37475a 0%, #2d3748 100%);
+  border-radius: 12px;
+  border: 1px solid #444444;
+  transition: all 0.3s ease;
+}
+
+.service-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 113, 206, 0.2);
+  border-color: #0071ce;
+}
+
+.service-icon {
+  font-size: 24px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0071ce, #004c91);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 113, 206, 0.3);
+}
+
+.service-content h4 {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+}
+
+.service-content p {
+  color: #cccccc;
+  font-size: 14px;
+  margin: 0;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+  background: #131a22;
+  padding: 30px 0;
+  border-top: 1px solid #444444;
+}
+
+.footer-bottom .footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  align-items: start;
+}
+
+/* Footer Brand */
+.footer-brand {
+  max-width: 350px;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.footer-logo .logo-icon {
+  font-size: 28px;
+  background: linear-gradient(135deg, #0071ce, #004c91);
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-logo .logo-text {
+  font-size: 24px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.footer-logo .logo-ai {
+  color: #0071ce;
+  font-weight: 900;
+}
+
+.footer-description {
+  color: #cccccc;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Payment Methods */
+.payment-methods h4 {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.payment-icons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.payment-icon {
+  width: 48px;
+  height: 32px;
+  background: #ffffff;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transition: all 0.3s ease;
+  border: 1px solid #e0e0e0;
+}
+
+.payment-icon:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+}
+
+/* App Download */
+.app-download h4 {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.app-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.app-button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: #000000;
+  border: 1px solid #444444;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 180px;
+}
+
+.app-button:hover {
+  background: #333333;
+  border-color: #0071ce;
+  transform: translateY(-2px);
+}
+
+.app-icon {
+  font-size: 24px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.app-store {
+  color: #cccccc;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.app-name {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* Footer Copyright */
+.footer-copyright {
+  background: #0f1419;
+  padding: 20px 0;
+  border-top: 1px solid #333333;
+}
+
+.copyright-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.copyright-content p {
+  color: #888888;
+  font-size: 14px;
+  margin: 0;
+}
+
+.footer-legal {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.footer-legal a {
+  color: #888888;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.footer-legal a:hover {
+  color: #0071ce;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .amazon-deals-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+  }
+  
+  .amazon-deal-card {
+    padding: 12px;
+    min-height: 350px;
+  }
+  
+  .amazon-image-container {
+    height: 150px;
+  }
+  
+  .amazon-product-title {
+    font-size: 14px;
+  }
+  
+  .main-price {
+    font-size: 20px;
+  }
+  
+  .tracking-banner {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+  
+  .tracking-input-container {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .live-orders-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .live-order-card {
+    padding: 16px;
+  }
+  
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .footer-services {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .service-item {
+    padding: 16px;
+  }
+  
+  .footer-bottom .footer-container {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    text-align: center;
+  }
+  
+  .payment-icons {
+    justify-content: center;
+  }
+  
+  .app-buttons {
+    align-items: center;
+  }
+  
+  .copyright-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
+  
+  .footer-legal {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .amazon-deals-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 8px;
+  }
+  
+  .amazon-deal-card {
+    padding: 8px;
+    min-height: 300px;
+  }
+  
+  .amazon-image-container {
+    height: 120px;
+  }
+  
+  .tracking-header {
+    padding: 12px 16px;
+  }
+  
+  .quick-track-section {
+    padding: 20px 16px;
+  }
+  
+  .live-orders-container {
+    padding: 20px 16px;
+  }
+  
+  .footer-main {
+    padding: 30px 0;
+  }
+  
+  .footer-container {
+    padding: 0 16px;
+  }
+  
+  .footer-grid {
+    gap: 24px;
+  }
+  
+  .service-item {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
+}

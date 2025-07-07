@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camera Test - RetailFlowAI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+        }
+        .status {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        video {
+            width: 100%;
+            max-width: 640px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .error {
+            background: rgba(255, 0, 0, 0.2);
+            border: 2px solid #ff4757;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        .success {
+            background: rgba(0, 255, 0, 0.2);
+            border: 2px solid #4CAF50;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Camera Diagnostics for RetailFlowAI AR</h1>
+        <p>This tool will help diagnose camera access issues for the AR features.</p>
+        
+        <div id="status" class="status">
+            📋 Ready to test camera access...
+        </div>
+        
+        <button onclick="testCameraAccess()">🎥 Test Camera Access</button>
+        <button onclick="checkPermissions()">🔐 Check Permissions</button>
+        <button onclick="listDevices()">📱 List Devices</button>
+        <button onclick="stopCamera()">⏹️ Stop Camera</button>
+        
+        <video id="video" autoplay playsinline muted style="display: none;"></video>
+        
+        <div id="results"></div>
+        
+        <div style="margin-top: 30px; background: rgba(0, 0, 0, 0.2); padding: 20px; border-radius: 10px;">
+            <h3>🛠️ Quick Fixes:</h3>
+            <ol>
+                <li><strong>Allow Camera Permission:</strong> Click "Allow" when browser asks for camera access</li>
+                <li><strong>Check URL:</strong> Ensure you're using HTTPS or localhost</li>
+                <li><strong>Close Other Apps:</strong> Close Zoom, Skype, Teams, etc.</li>
+                <li><strong>Refresh Browser:</strong> Sometimes a simple refresh helps</li>
+                <li><strong>Try Different Browser:</strong> Chrome, Firefox, Safari, or Edge</li>
+                <li><strong>Check Browser Settings:</strong> Go to Settings → Privacy → Camera</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        let stream = null;
+        const video = document.getElementById('video');
+        const status = document.getElementById('status');
+        const results = document.getElementById('results');
+
+        function updateStatus(message, type = 'info') {
+            status.innerHTML = message;
+            status.className = `status ${type}`;
+            console.log(message);
+        }
+
+        async function testCameraAccess() {
+            updateStatus('🔄 Testing camera access...');
+            
+            try {
+                // Check if getUserMedia is supported
+                if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+                    throw new Error('getUserMedia not supported in this browser');
+                }
+
+                // Try to get camera access
+                stream = await navigator.mediaDevices.getUserMedia({
+                    video: {
+                        width: { ideal: 640, min: 320 },
+                        height: { ideal: 480, min: 240 },
+                        facingMode: 'user'
+                    },
+                    audio: false
+                });
+
+                video.srcObject = stream;
+                video.style.display = 'block';
+                
+                updateStatus('✅ Camera access successful! AR should work now.', 'success');
+                
+            } catch (error) {
+                updateStatus(`❌ Camera error: ${error.name} - ${error.message}`, 'error');
+                
+                let suggestion = '';
+                switch (error.name) {
+                    case 'NotAllowedError':
+                        suggestion = '🔧 Solution: Click "Allow" for camera permission and refresh the page.';
+                        break;
+                    case 'NotFoundError':
+                        suggestion = '🔧 Solution: Make sure a camera is connected to your device.';
+                        break;
+                    case 'NotReadableError':
+                        suggestion = '🔧 Solution: Close other apps using the camera (Zoom, Skype, etc.).';
+                        break;
+                    case 'SecurityError':
+                        suggestion = '🔧 Solution: Use HTTPS or localhost. Current URL: ' + window.location.href;
+                        break;
+                    default:
+                        suggestion = '🔧 Solution: Try refreshing the page or using a different browser.';
+                }
+                
+                results.innerHTML = `<div class="error">${suggestion}</div>`;
+            }
+        }
+
+        async function checkPermissions() {
+            updateStatus('🔄 Checking permissions...');
+            
+            if (!navigator.permissions) {
+                updateStatus('❌ Permissions API not supported', 'error');
+                return;
+            }
+
+            try {
+                const permission = await navigator.permissions.query({ name: 'camera' });
+                updateStatus(`📋 Camera permission: ${permission.state}`, 
+                    permission.state === 'granted' ? 'success' : 'error');
+                
+                results.innerHTML = `
+                    <div class="status">
+                        <h4>Permission Details:</h4>
+                        <p>State: ${permission.state}</p>
+                        <p>Browser: ${navigator.userAgent.split(' ')[0]}</p>
+                        <p>Protocol: ${window.location.protocol}</p>
+                        <p>Host: ${window.location.host}</p>
+                    </div>
+                `;
+            } catch (error) {
+                updateStatus(`❌ Permission check failed: ${error.message}`, 'error');
+            }
+        }
+
+        async function listDevices() {
+            updateStatus('🔄 Listing camera devices...');
+            
+            try {
+                const devices = await navigator.mediaDevices.enumerateDevices();
+                const cameras = devices.filter(device => device.kind === 'videoinput');
+                
+                if (cameras.length === 0) {
+                    updateStatus('❌ No cameras found', 'error');
+                    results.innerHTML = '<div class="error">No cameras detected. Please connect a camera.</div>';
+                } else {
+                    updateStatus(`✅ Found ${cameras.length} camera(s)`, 'success');
+                    
+                    let deviceList = '<div class="success"><h4>Available Cameras:</h4><ul>';
+                    cameras.forEach((device, index) => {
+                        deviceList += `<li>${device.label || `Camera ${index + 1}`}</li>`;
+                    });
+                    deviceList += '</ul></div>';
+                    
+                    results.innerHTML = deviceList;
+                }
+            } catch (error) {
+                updateStatus(`❌ Failed to list devices: ${error.message}`, 'error');
+            }
+        }
+
+        function stopCamera() {
+            if (stream) {
+                stream.getTracks().forEach(track => track.stop());
+                video.srcObject = null;
+                video.style.display = 'none';
+                stream = null;
+                updateStatus('⏹️ Camera stopped');
+                results.innerHTML = '';
+            } else {
+                updateStatus('ℹ️ No active camera to stop');
+            }
+        }
+
+        // Auto-check on page load
+        window.addEventListener('load', () => {
+            updateStatus('🌐 Page loaded. Click "Test Camera Access" to begin.');
+            checkPermissions();
+        });
+    </script>
+</body>
+</html>

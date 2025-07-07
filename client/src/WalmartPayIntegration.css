@@ -1,0 +1,386 @@
+.payment-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.payment-container {
+  background: white;
+  border-radius: 20px;
+  padding: 0;
+  max-width: 500px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: slideUp 0.4s ease-out;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.payment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  border-bottom: 1px solid #f0f0f0;
+  background: linear-gradient(135deg, #0071ce, #004c91);
+  color: white;
+  border-radius: 20px 20px 0 0;
+}
+
+.payment-header h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.close-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  font-size: 24px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.payment-amount {
+  text-align: center;
+  padding: 32px 24px;
+  background: linear-gradient(135deg, #f8f9ff, #e8f2ff);
+}
+
+.amount-display {
+  font-size: 48px;
+  font-weight: 700;
+  color: #0071ce;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.currency {
+  font-size: 32px;
+  opacity: 0.8;
+}
+
+.amount-display + p {
+  color: #666;
+  font-size: 16px;
+  margin: 0;
+}
+
+.payment-methods {
+  padding: 0 24px;
+}
+
+.payment-method {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border: 2px solid #f0f0f0;
+  border-radius: 16px;
+  margin-bottom: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  background: white;
+}
+
+.payment-method:hover {
+  border-color: #0071ce;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 113, 206, 0.15);
+}
+
+.payment-method.selected {
+  border-color: #0071ce;
+  background: linear-gradient(135deg, #f8f9ff, #e8f2ff);
+  box-shadow: 0 8px 20px rgba(0, 113, 206, 0.2);
+}
+
+.payment-method.featured {
+  border-color: #ffd700;
+  background: linear-gradient(135deg, #fffbf0, #fff8e1);
+  box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
+}
+
+.featured-badge {
+  position: absolute;
+  top: -8px;
+  left: 16px;
+  background: linear-gradient(135deg, #ffd700, #ffb347);
+  color: #333;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  box-shadow: 0 4px 8px rgba(255, 215, 0, 0.3);
+}
+
+.method-icon {
+  font-size: 32px;
+  margin-right: 16px;
+  width: 48px;
+  text-align: center;
+}
+
+.method-info {
+  flex: 1;
+}
+
+.method-info h3 {
+  margin: 0 0 4px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+
+.method-info p {
+  margin: 0;
+  color: #666;
+  font-size: 14px;
+}
+
+.method-radio input {
+  width: 20px;
+  height: 20px;
+  accent-color: #0071ce;
+}
+
+.walmart-pay-benefits {
+  margin: 0 24px 24px 24px;
+  padding: 20px;
+  background: linear-gradient(135deg, #e8f5e8, #f0fdf4);
+  border-radius: 16px;
+  border: 2px solid #22c55e;
+}
+
+.walmart-pay-benefits h4 {
+  margin: 0 0 16px 0;
+  color: #166534;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.walmart-pay-benefits ul {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.walmart-pay-benefits li {
+  margin-bottom: 8px;
+  color: #166534;
+  font-size: 14px;
+  padding-left: 4px;
+}
+
+.payment-actions {
+  padding: 0 24px 24px 24px;
+}
+
+.pay-button {
+  width: 100%;
+  padding: 18px 24px;
+  background: linear-gradient(135deg, #0071ce, #004c91);
+  color: white;
+  border: none;
+  border-radius: 16px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.pay-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #005bb5, #003d7a);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(0, 113, 206, 0.3);
+}
+
+.pay-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.processing {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.security-info {
+  padding: 0 24px 24px 24px;
+  text-align: center;
+}
+
+.security-badges {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  background: #f8f9fa;
+  color: #495057;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid #e9ecef;
+}
+
+.payment-success {
+  text-align: center;
+  padding: 48px 24px;
+}
+
+.success-animation {
+  margin-bottom: 24px;
+}
+
+.checkmark {
+  font-size: 64px;
+  animation: bounce 0.6s ease-out;
+}
+
+.payment-success h2 {
+  color: #22c55e;
+  margin: 0 0 16px 0;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.payment-success p {
+  color: #666;
+  font-size: 18px;
+  margin: 0 0 32px 0;
+}
+
+.transaction-details {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 16px;
+  text-align: left;
+}
+
+.transaction-details p {
+  margin: 8px 0;
+  font-size: 14px;
+  color: #495057;
+  display: flex;
+  justify-content: space-between;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 53%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40%, 43% {
+    transform: translateY(-20px);
+  }
+  70% {
+    transform: translateY(-10px);
+  }
+  90% {
+    transform: translateY(-4px);
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .payment-container {
+    width: 95%;
+    margin: 10px;
+  }
+  
+  .amount-display {
+    font-size: 36px;
+  }
+  
+  .currency {
+    font-size: 24px;
+  }
+  
+  .payment-method {
+    padding: 16px;
+  }
+  
+  .method-icon {
+    font-size: 24px;
+    width: 36px;
+  }
+  
+  .method-info h3 {
+    font-size: 16px;
+  }
+  
+  .security-badges {
+    gap: 8px;
+  }
+  
+  .badge {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+}

@@ -1,0 +1,36 @@
+<!-- AR Glasses Model - Smart Glass Style -->
+<svg width="200" height="60" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+  <!-- Bridge -->
+  <rect x="90" y="26" width="20" height="4" fill="#4A90E2" rx="2"/>
+  
+  <!-- Left Lens (Futuristic) -->
+  <rect x="25" y="18" width="50" height="24" fill="rgba(74,144,226,0.5)" stroke="#4A90E2" stroke-width="2" rx="5"/>
+  <rect x="28" y="21" width="44" height="18" fill="rgba(0,100,255,0.1)" rx="3"/>
+  
+  <!-- Right Lens (Futuristic) -->
+  <rect x="125" y="18" width="50" height="24" fill="rgba(74,144,226,0.5)" stroke="#4A90E2" stroke-width="2" rx="5"/>
+  <rect x="128" y="21" width="44" height="18" fill="rgba(0,100,255,0.1)" rx="3"/>
+  
+  <!-- Left Temple -->
+  <line x1="20" y1="30" x2="8" y2="35" stroke="#4A90E2" stroke-width="4" stroke-linecap="round"/>
+  
+  <!-- Right Temple -->
+  <line x1="180" y1="30" x2="192" y2="35" stroke="#4A90E2" stroke-width="4" stroke-linecap="round"/>
+  
+  <!-- Tech Elements -->
+  <circle cx="30" cy="24" r="2" fill="#00FF00"/>
+  <circle cx="170" cy="24" r="2" fill="#00FF00"/>
+  <rect x="35" y="22" width="8" height="2" fill="#00BFFF" opacity="0.8"/>
+  <rect x="135" y="22" width="8" height="2" fill="#00BFFF" opacity="0.8"/>
+  
+  <!-- Holographic Effect -->
+  <defs>
+    <linearGradient id="holo" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF00FF;stop-opacity:0.3" />
+      <stop offset="50%" style="stop-color:#00FFFF;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#FFFF00;stop-opacity:0.3" />
+    </linearGradient>
+  </defs>
+  <rect x="28" y="21" width="44" height="18" fill="url(#holo)" rx="3"/>
+  <rect x="128" y="21" width="44" height="18" fill="url(#holo)" rx="3"/>
+</svg>

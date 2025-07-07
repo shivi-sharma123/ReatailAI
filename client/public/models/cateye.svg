@@ -1,0 +1,31 @@
+<!-- AR Glasses Model - Cat Eye Style -->
+<svg width="200" height="60" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+  <!-- Bridge -->
+  <rect x="92" y="27" width="16" height="3" fill="#FFB6C1" rx="1"/>
+  
+  <!-- Left Lens (Cat Eye Shape) -->
+  <path d="M 20 30 Q 15 20 35 18 Q 65 20 80 30 Q 75 40 55 42 Q 25 40 20 30 Z" 
+        fill="rgba(255,182,193,0.7)" stroke="#FFB6C1" stroke-width="2"/>
+  <path d="M 25 30 Q 22 24 38 22 Q 60 24 75 30 Q 72 36 52 38 Q 28 36 25 30 Z" 
+        fill="rgba(0,0,0,0.1)"/>
+  
+  <!-- Right Lens (Cat Eye Shape) -->
+  <path d="M 120 30 Q 125 20 145 18 Q 175 20 180 30 Q 175 40 155 42 Q 125 40 120 30 Z" 
+        fill="rgba(255,182,193,0.7)" stroke="#FFB6C1" stroke-width="2"/>
+  <path d="M 125 30 Q 128 24 142 22 Q 172 24 175 30 Q 172 36 152 38 Q 128 36 125 30 Z" 
+        fill="rgba(0,0,0,0.1)"/>
+  
+  <!-- Left Temple -->
+  <line x1="15" y1="30" x2="5" y2="35" stroke="#FFB6C1" stroke-width="3" stroke-linecap="round"/>
+  
+  <!-- Right Temple -->
+  <line x1="185" y1="30" x2="195" y2="35" stroke="#FFB6C1" stroke-width="3" stroke-linecap="round"/>
+  
+  <!-- Decorative Elements -->
+  <circle cx="25" cy="22" r="2" fill="#FF69B4"/>
+  <circle cx="175" cy="22" r="2" fill="#FF69B4"/>
+  
+  <!-- Reflections -->
+  <ellipse cx="40" cy="25" rx="8" ry="3" fill="rgba(255,255,255,0.4)"/>
+  <ellipse cx="160" cy="25" rx="8" ry="3" fill="rgba(255,255,255,0.4)"/>
+</svg>

@@ -1,0 +1,71 @@
+/* Mobile Responsive Design for Enhanced Horizontal Layout */
+@media (max-width: 768px) {
+  .flash-deals-section {
+    margin: 1rem 0;
+    border-radius: 16px;
+  }
+  
+  .deals-header {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+    border-radius: 16px 16px 0 0;
+  }
+  
+  .header-left, .header-right {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .deals-header h2 {
+    font-size: 2.5rem;
+    text-align: center;
+  }
+  
+  .timer-container {
+    justify-content: center;
+  }
+  
+  .live-deals-grid {
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+  
+  .live-deal-card {
+    flex: 0 0 280px !important; /* Smaller cards on mobile */
+    height: 400px !important;
+    min-width: 280px;
+  }
+  
+  .scroll-indicator {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+  
+  .scroll-indicator.left {
+    left: 0.5rem;
+  }
+  
+  .scroll-indicator.right {
+    right: 0.5rem;
+  }
+  
+  .category-scroll-container {
+    gap: 1rem;
+  }
+  
+  .category-item {
+    min-width: 120px;
+    padding: 1rem;
+  }
+  
+  .offers-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .offer-card {
+    text-align: center;
+    flex-direction: column;
+  }
+}

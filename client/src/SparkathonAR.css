@@ -1,0 +1,325 @@
+/* 🚀 SPARKATHON AR EXPERIENCE STYLES */
+
+/* Enhanced Quick Actions */
+.quick-actions {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.product-card:hover .quick-actions {
+  opacity: 1;
+}
+
+.sparkathon-ar {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+  animation: sparkathonPulse 2s ease-in-out infinite;
+}
+
+@keyframes sparkathonPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.share-btn {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+.wishlist-btn.active {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  animation: heartBeat 1s ease-in-out;
+}
+
+@keyframes heartBeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+/* Enhanced Product Info */
+.sparkathon-rating {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.trending-badge {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 10px;
+  font-weight: bold;
+  animation: trending 2s ease-in-out infinite;
+}
+
+@keyframes trending {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* Enhanced Color Selection */
+.sparkathon-colors {
+  margin-bottom: 15px;
+}
+
+.sparkathon-swatch {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: white;
+  margin: 0 2px;
+}
+
+.sparkathon-swatch:hover {
+  transform: scale(1.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.sparkathon-swatch.selected {
+  border-color: #6366f1;
+  transform: scale(1.15);
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+}
+
+.sparkathon-selected {
+  color: #6366f1;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+/* 🚀 SPARKATHON AR OVERLAY */
+.sparkathon-ar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  backdrop-filter: blur(10px);
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.sparkathon-ar-container {
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  border-radius: 25px;
+  padding: 30px;
+  max-width: 1200px;
+  width: 95%;
+  max-height: 95vh;
+  overflow-y: auto;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+  border: 2px solid #6366f1;
+  position: relative;
+}
+
+.sparkathon-ar-header {
+  text-align: center;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.sparkathon-ar-header h2 {
+  color: #6366f1;
+  font-size: 2.5em;
+  margin-bottom: 10px;
+  text-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+.sparkathon-ar-header h3 {
+  color: white;
+  font-size: 1.5em;
+  margin-bottom: 0;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 20px rgba(99, 102, 241, 0.5); }
+  to { text-shadow: 0 0 30px rgba(99, 102, 241, 0.8); }
+}
+
+.sparkathon-ar-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #ef4444;
+  color: white;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.sparkathon-ar-close:hover {
+  background: #dc2626;
+  transform: scale(1.1);
+}
+
+.sparkathon-ar-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* AR Product Display */
+.sparkathon-ar-product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sparkathon-product-image {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  border-radius: 25px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s ease;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+  margin-bottom: 20px;
+}
+
+.sparkathon-product-image.animating {
+  box-shadow: 0 20px 60px rgba(99, 102, 241, 0.4);
+}
+
+.sparkathon-product-image img {
+  width: 85%;
+  height: 85%;
+  object-fit: cover;
+  border-radius: 15px;
+  transition: all 0.5s ease;
+  z-index: 2;
+  position: relative;
+}
+
+.sparkathon-ar-tech-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ar-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(99, 102, 241, 0.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99, 102, 241, 0.3) 1px, transparent 1px);
+  background-size: 25px 25px;
+  animation: gridMove 3s linear infinite;
+}
+
+@keyframes gridMove {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(25px, 25px); }
+}
+
+.ar-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 20%, rgba(99, 102, 241, 0.4) 3px, transparent 3px),
+    radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.4) 3px, transparent 3px),
+    radial-gradient(circle at 40% 60%, rgba(99, 102, 241, 0.4) 3px, transparent 3px);
+  background-size: 60px 60px, 80px 80px, 100px 100px;
+  animation: particleFloat 4s ease-in-out infinite;
+}
+
+@keyframes particleFloat {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(180deg); }
+}
+
+.ar-scanner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #6366f1, transparent);
+  animation: scan 2s linear infinite;
+}
+
+@keyframes scan {
+  0% { top: 0; opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+/* AR Controls */
+.sparkathon-ar-controls {
+  display: flex;
+  gap: 15px;
+}
+
+.sparkathon-rotate-btn,
+.sparkathon-auto-rotate {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
+}
+
+.sparkathon-rotate-btn:hover,
+.sparkathon-auto-rotate:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .sparkathon-ar-content {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .sparkathon-product-image {
+    width: 300px;
+    height: 300px;
+  }
+}
