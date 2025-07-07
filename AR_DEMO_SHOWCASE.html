@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🥽 AR Shopping Experience - RetailFlowAI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: white;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .feature-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+        
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .feature-description {
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        .launch-section {
+            text-align: center;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .launch-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            color: white;
+            padding: 20px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+        }
+        
+        .launch-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(76, 175, 80, 0.5);
+        }
+        
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .demo-card {
+            background: rgba(255,255,255,0.95);
+            color: #333;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .demo-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .demo-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+        
+        .demo-content {
+            padding: 20px;
+        }
+        
+        .demo-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .demo-price {
+            font-size: 1.1rem;
+            color: #4CAF50;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .demo-features {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .demo-feature {
+            background: #667eea;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+        
+        .status-info {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .status-item {
+            display: inline-block;
+            margin: 0 20px;
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+        }
+        
+        .status-green {
+            background: rgba(76, 175, 80, 0.3);
+            border: 2px solid #4CAF50;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🥽 AR Shopping Experience</h1>
+            <p>Transform your shopping with immersive AR technology</p>
+        </div>
+        
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <div class="feature-title">Real-Time Color Changing</div>
+                <div class="feature-description">
+                    Instantly change product colors and see realistic transformations with advanced color filters and effects
+                </div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">📏</div>
+                <div class="feature-title">Dynamic Size Variations</div>
+                <div class="feature-description">
+                    Visualize different sizes with accurate scaling and see how products look in various dimensions
+                </div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🎮</div>
+                <div class="feature-title">Interactive 3D Models</div>
+                <div class="feature-description">
+                    Rotate, zoom, and explore products in stunning 3D with realistic lighting and materials
+                </div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🚀</div>
+                <div class="feature-title">Immersive AR Environment</div>
+                <div class="feature-description">
+                    Place products in realistic environments with advanced lighting and shadow effects
+                </div>
+            </div>
+        </div>
+        
+        <div class="launch-section">
+            <h2>🛍️ Ready to Experience AR Shopping?</h2>
+            <p style="margin: 20px 0;">Click any product to launch the AR experience</p>
+            <a href="http://localhost:3000" class="launch-btn">
+                🚀 Launch AR Shopping App
+            </a>
+        </div>
+        
+        <div class="demo-grid">
+            <div class="demo-card">
+                <div class="demo-image">⌚</div>
+                <div class="demo-content">
+                    <div class="demo-title">Apple Watch Series 9</div>
+                    <div class="demo-price">$399.00</div>
+                    <div class="demo-features">
+                        <span class="demo-feature">5 Colors</span>
+                        <span class="demo-feature">2 Sizes</span>
+                        <span class="demo-feature">AR Ready</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="demo-card">
+                <div class="demo-image">👟</div>
+                <div class="demo-content">
+                    <div class="demo-title">Nike Air Max 270</div>
+                    <div class="demo-price">$150.00</div>
+                    <div class="demo-features">
+                        <span class="demo-feature">5 Colors</span>
+                        <span class="demo-feature">10 Sizes</span>
+                        <span class="demo-feature">AR Ready</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="demo-card">
+                <div class="demo-image">🕶️</div>
+                <div class="demo-content">
+                    <div class="demo-title">Ray-Ban Aviator</div>
+                    <div class="demo-price">$150.00</div>
+                    <div class="demo-features">
+                        <span class="demo-feature">5 Colors</span>
+                        <span class="demo-feature">2 Sizes</span>
+                        <span class="demo-feature">AR Ready</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="demo-card">
+                <div class="demo-image">👖</div>
+                <div class="demo-content">
+                    <div class="demo-title">Levi's 501 Jeans</div>
+                    <div class="demo-price">$89.50</div>
+                    <div class="demo-features">
+                        <span class="demo-feature">5 Colors</span>
+                        <span class="demo-feature">7 Sizes</span>
+                        <span class="demo-feature">AR Ready</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="status-info">
+            <h3>🔍 System Status</h3>
+            <div style="margin-top: 20px;">
+                <div class="status-item status-green">
+                    <strong>✅ Backend:</strong> Running on port 5000
+                </div>
+                <div class="status-item status-green">
+                    <strong>✅ Frontend:</strong> Running on port 3000
+                </div>
+                <div class="status-item status-green">
+                    <strong>✅ AR Engine:</strong> Ready
+                </div>
+                <div class="status-item status-green">
+                    <strong>✅ Database:</strong> 5 AR Products Loaded
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

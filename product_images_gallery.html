@@ -1,0 +1,455 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RetailFlow AI - Product Images Gallery</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .header h1 {
+            font-size: 3em;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+            margin: 10px 0;
+        }
+        .category-section {
+            margin-bottom: 50px;
+        }
+        .category-title {
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-align: center;
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        .product-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        .product-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        .product-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .product-details {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+        }
+        .product-info {
+            background: rgba(255,255,255,0.1);
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        .image-gallery {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding: 10px 0;
+        }
+        .gallery-image {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+            flex-shrink: 0;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        .gallery-image:hover {
+            transform: scale(1.1);
+        }
+        .stats {
+            text-align: center;
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 20px;
+            margin: 40px 0;
+            backdrop-filter: blur(10px);
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .stat-item {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 15px;
+        }
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🛍️ RetailFlow AI Product Gallery</h1>
+            <p>🖼️ Professional Images for All Products with AR-Ready Quality</p>
+        </div>
+
+        <div class="stats">
+            <h2>📊 Gallery Statistics</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">15</span>
+                    <div>Total Products</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">4</span>
+                    <div>Categories</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">60</span>
+                    <div>Total Images</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">4.0</span>
+                    <div>Avg Images/Product</div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="category-section">
+            <div class="category-title">🏷️ ACCESSORIES Collection (5 Products)</div>
+            <div class="products-grid">
+        
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Celestial Silk Scarf" class="product-image product-image-31">
+                    <div class="product-title">Celestial Silk Scarf</div>
+                    <div class="product-details">
+                        <span>💰 $149.99</span>
+                        <span>⭐ 4.7/5</span>
+                        <span>🏷️ Celestial Silk</span>
+                    </div>
+                    <div class="product-info">
+                        <div>🎨 8 Colors | 📏 4 Sizes</div>
+                        <div>🖼️ 4 Professional Images</div>
+                    </div>
+                    <div class="image-gallery">
+                        <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Celestial Silk Scarf" class="gallery-image" onclick="document.querySelector('.product-image-31').src=this.src"><img src="https://images.unsplash.com/photo-1590874103328-eac38a683ce7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Celestial Silk Scarf" class="gallery-image" onclick="document.querySelector('.product-image-31').src=this.src"><img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Celestial Silk Scarf" class="gallery-image" onclick="document.querySelector('.product-image-31').src=this.src"><img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Celestial Silk Scarf" class="gallery-image" onclick="document.querySelector('.product-image-31').src=this.src">
+                    </div>
+                </div>
+            
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Designer Crystal Sunglasses" class="product-image product-image-23">
+                    <div class="product-title">Designer Crystal Sunglasses</div>
+                    <div class="product-details">
+                        <span>💰 $399.99</span>
+                        <span>⭐ 4.9/5</span>
+                        <span>🏷️ Crystal Vision</span>
+                    </div>
+                    <div class="product-info">
+                        <div>🎨 8 Colors | 📏 4 Sizes</div>
+                        <div>🖼️ 4 Professional Images</div>
+                    </div>
+                    <div class="image-gallery">
+                        <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Designer Crystal Sunglasses" class="gallery-image" onclick="document.querySelector('.product-image-23').src=this.src"><img src="https://images.unsplash.com/photo-1577803645773-f96470509666?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Designer Crystal Sunglasses" class="gallery-image" onclick="document.querySelector('.product-image-23').src=this.src"><img src="https://images.unsplash.com/photo-1582142306909-195724d33fbe?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Designer Crystal Sunglasses" class="gallery-image" onclick="document.querySelector('.product-image-23').src=this.src"><img src="https://images.unsplash.com/photo-1586578267921-4338fb57c8b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Designer Crystal Sunglasses" class="gallery-image" onclick="document.querySelector('.product-image-23').src=this.src">
+                    </div>
+                </div>
+            
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Diamond-Studded Evening Clutch" class="product-image product-image-30">
+                    <div class="product-title">Diamond-Studded Evening Clutch</div>
+                    <div class="product-details">
+                        <span>💰 $899.99</span>
+                        <span>⭐ 5.0/5</span>
+                        <span>🏷️ Diamond Luxury</span>
+                    </div>
+                    <div class="product-info">
+                        <div>🎨 8 Colors | 📏 4 Sizes</div>
+                        <div>🖼️ 4 Professional Images</div>
+                    </div>
+                    <div class="image-gallery">
+                        <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Diamond-Studded Evening Clutch" class="gallery-image" onclick="document.querySelector('.product-image-30').src=this.src"><img src="https://images.unsplash.com/photo-1590874103328-eac38a683ce7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Diamond-Studded Evening Clutch" class="gallery-image" onclick="document.querySelector('.product-image-30').src=this.src"><img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Diamond-Studded Evening Clutch" class="gallery-image" onclick="document.querySelector('.product-image-30').src=this.src"><img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Diamond-Studded Evening Clutch" class="gallery-image" onclick="document.querySelector('.product-image-30').src=this.src">
+                    </div>
+                </div>
+            
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Glow-in-the-Dark Backpack" class="product-image product-image-32">
+                    <div class="product-title">Glow-in-the-Dark Backpack</div>
+                    <div class="product-details">
+                        <span>💰 $119.99</span>
+                        <span>⭐ 4.6/5</span>
+                        <span>🏷️ Glow Gear</span>
+                    </div>
+                    <div class="product-info">
+                        <div>🎨 8 Colors | 📏 4 Sizes</div>
+                        <div>🖼️ 4 Professional Images</div>
+                    </div>
+                    <div class="image-gallery">
+                        <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Glow-in-the-Dark Backpack" class="gallery-image" onclick="document.querySelector('.product-image-32').src=this.src"><img src="https://images.unsplash.com/photo-1590874103328-eac38a683ce7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Glow-in-the-Dark Backpack" class="gallery-image" onclick="document.querySelector('.product-image-32').src=this.src"><img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Glow-in-the-Dark Backpack" class="gallery-image" onclick="document.querySelector('.product-image-32').src=this.src"><img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Glow-in-the-Dark Backpack" class="gallery-image" onclick="document.querySelector('.product-image-32').src=this.src">
+                    </div>
+                </div>
+            
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Infinity Color-Shift Handbag" class="product-image product-image-25">
+                    <div class="product-title">Infinity Color-Shift Handbag</div>
+                    <div class="product-details">
+                        <span>💰 $199.99</span>
+                        <span>⭐ 4.7/5</span>
+                        <span>🏷️ Mystique Bags</span>
+                    </div>
+                    <div class="product-info">
+                        <div>🎨 8 Colors | 📏 4 Sizes</div>
+                        <div>🖼️ 4 Professional Images</div>
+                    </div>
+                    <div class="image-gallery">
+                        <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Infinity Color-Shift Handbag" class="gallery-image" onclick="document.querySelector('.product-image-25').src=this.src"><img src="https://images.unsplash.com/photo-1590874103328-eac38a683ce7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Infinity Color-Shift Handbag" class="gallery-image" onclick="document.querySelector('.product-image-25').src=this.src"><img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Infinity Color-Shift Handbag" class="gallery-image" onclick="document.querySelector('.product-image-25').src=this.src"><img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Infinity Color-Shift Handbag" class="gallery-image" onclick="document.querySelector('.product-image-25').src=this.src">
+                    </div>
+                </div>
+            
+            </div>
+        </div>
+        
+        <div class="category-section">
+            <div class="category-title">🏷️ CLOTHING Collection (6 Products)</div>
+            <div class="products-grid">
+        
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1506629905057-50590cda9a4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Chromatic Yoga Leggings" class="product-image product-image-27">
+                    <div class="product-title">Chromatic Yoga Leggings</div>
+                    <div class="product-details">
+                        <span>💰 $89.99</span>
+                        <span>⭐ 4.5/5</span>
+                        <span>🏷️ Zen Activewear</span>
+                    </div>
+                    <div class="product-info">
+                        <div>🎨 10 Colors | 📏 7 Sizes</div>
+                        <div>🖼️ 4 Professional Images</div>
+                    </div>
+                    <div class="image-gallery">
+                        <img src="https://images.unsplash.com/photo-1506629905057-50590cda9a4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Chromatic Yoga Leggings" class="gallery-image" onclick="document.querySelector('.product-image-27').src=this.src"><img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Chromatic Yoga Leggings" class="gallery-image" onclick="document.querySelector('.product-image-27').src=this.src"><img src="https://images.unsplash.com/photo-1594882645126-14020914d58d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Chromatic Yoga Leggings" class="gallery-image" onclick="document.querySelector('.product-image-27').src=this.src"><img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Chromatic Yoga Leggings" class="gallery-image" onclick="document.querySelector('.product-image-27').src=this.src">
+                    </div>
+                </div>
+            
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Color-Changing Smart T-Shirt" class="product-image product-image-22">
+                    <div class="product-title">Color-Changing Smart T-Shirt</div>
+                    <div class="product-details">
+                        <span>💰 $79.99</span>
+                        <span>⭐ 4.5/5</span>
+                        <span>🏷️ Tech Wear</span>
+                    </div>
+                    <div class="product-info">
+                        <div>🎨 10 Colors | 📏 7 Sizes</div>
+                        <div>🖼️ 4 Professional Images</div>
+                    </div>
+                    <div class="image-gallery">
+                        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Color-Changing Smart T-Shirt" class="gallery-image" onclick="document.querySelector('.product-image-22').src=this.src"><img src="https://images.unsplash.com/photo-1571945153237-4929e783af4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Color-Changing Smart T-Shirt" class="gallery-image" onclick="document.querySelector('.product-image-22').src=this.src"><img src="https://images.unsplash.com/photo-1583743814966-8936f37f4ccf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Color-Changing Smart T-Shirt" class="gallery-image" onclick="document.querySelector('.product-image-22').src=this.src"><img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Color-Changing Smart T-Shirt" class="gallery-image" onclick="document.querySelector('.product-image-22').src=this.src">
+                    </div>
+                </div>
+            
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Elegant Velvet Blazer" class="product-image product-image-19">
+                    <div class="product-title">Elegant Velvet Blazer</div>
+                    <div class="product-details">
+                        <span>💰 $189.99</span>
+                        <span>⭐ 4.8/5</span>
+                        <span>🏷️ Executive Style</span>
+                    </div>
+                    <div class="product-info">
+                        <div>🎨 10 Colors | 📏 7 Sizes</div>
+                        <div>🖼️ 4 Professional Images</div>
+                    </div>
+                    <div class="image-gallery">
+                        <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Elegant Velvet Blazer" class="gallery-image" onclick="document.querySelector('.product-image-19').src=this.src"><img src="https://images.unsplash.com/photo-1565084888279-aca607ecce0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Elegant Velvet Blazer" class="gallery-image" onclick="document.querySelector('.product-image-19').src=this.src"><img src="https://images.unsplash.com/photo-1506629905057-50590cda9a4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Elegant Velvet Blazer" class="gallery-image" onclick="document.querySelector('.product-image-19').src=this.src"><img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Elegant Velvet Blazer" class="gallery-image" onclick="document.querySelector('.product-image-19').src=this.src">
+                    </div>
+                </div>
+            
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1566479179817-c4b3a1f8b5b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Glamorous Sequin Party Dress" class="product-image product-image-18">
+                    <div class="product-title">Glamorous Sequin Party Dress</div>
+                    <div class="product-details">
+                        <span>💰 $299.99</span>
+                        <span>⭐ 4.9/5</span>
+                        <span>🏷️ Glamour Couture</span>
+                    </div>
+                    <div class="product-info">
+                        <div>🎨 10 Colors | 📏 7 Sizes</div>
+                        <div>🖼️ 4 Professional Images</div>
+                    </div>
+                    <div class="image-gallery">
+                        <img src="https://images.unsplash.com/photo-1566479179817-c4b3a1f8b5b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Glamorous Sequin Party Dress" class="gallery-image" onclick="document.querySelector('.product-image-18').src=this.src"><img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Glamorous Sequin Party Dress" class="gallery-image" onclick="document.querySelector('.product-image-18').src=this.src"><img src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Glamorous Sequin Party Dress" class="gallery-image" onclick="document.querySelector('.product-image-18').src=this.src"><img src="https://images.unsplash.com/photo-1565518776875-57c7a0ac3071?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Glamorous Sequin Party Dress" class="gallery-image" onclick="document.querySelector('.product-image-18').src=this.src">
+                    </div>
+                </div>
+            
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Premium Denim Collection Jeans" class="product-image product-image-21">
+                    <div class="product-title">Premium Denim Collection Jeans</div>
+                    <div class="product-details">
+                        <span>💰 $129.99</span>
+                        <span>⭐ 4.6/5</span>
+                        <span>🏷️ Denim Masters</span>
+                    </div>
+                    <div class="product-info">
+                        <div>🎨 10 Colors | 📏 7 Sizes</div>
+                        <div>🖼️ 4 Professional Images</div>
+                    </div>
+                    <div class="image-gallery">
+                        <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Premium Denim Collection Jeans" class="gallery-image" onclick="document.querySelector('.product-image-21').src=this.src"><img src="https://images.unsplash.com/photo-1565084888279-aca607ecce0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Premium Denim Collection Jeans" class="gallery-image" onclick="document.querySelector('.product-image-21').src=this.src"><img src="https://images.unsplash.com/photo-1506629905057-50590cda9a4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Premium Denim Collection Jeans" class="gallery-image" onclick="document.querySelector('.product-image-21').src=this.src"><img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Premium Denim Collection Jeans" class="gallery-image" onclick="document.querySelector('.product-image-21').src=this.src">
+                    </div>
+                </div>
+            
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Rainbow Holographic Jacket" class="product-image product-image-20">
+                    <div class="product-title">Rainbow Holographic Jacket</div>
+                    <div class="product-details">
+                        <span>💰 $249.99</span>
+                        <span>⭐ 4.7/5</span>
+                        <span>🏷️ Futuristic Fashion</span>
+                    </div>
+                    <div class="product-info">
+                        <div>🎨 10 Colors | 📏 7 Sizes</div>
+                        <div>🖼️ 4 Professional Images</div>
+                    </div>
+                    <div class="image-gallery">
+                        <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Rainbow Holographic Jacket" class="gallery-image" onclick="document.querySelector('.product-image-20').src=this.src"><img src="https://images.unsplash.com/photo-1565084888279-aca607ecce0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Rainbow Holographic Jacket" class="gallery-image" onclick="document.querySelector('.product-image-20').src=this.src"><img src="https://images.unsplash.com/photo-1506629905057-50590cda9a4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Rainbow Holographic Jacket" class="gallery-image" onclick="document.querySelector('.product-image-20').src=this.src"><img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Rainbow Holographic Jacket" class="gallery-image" onclick="document.querySelector('.product-image-20').src=this.src">
+                    </div>
+                </div>
+            
+            </div>
+        </div>
+        
+        <div class="category-section">
+            <div class="category-title">🏷️ ELECTRONICS Collection (3 Products)</div>
+            <div class="products-grid">
+        
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1484704849700-f032a568e944?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Aurora Wireless Earbuds" class="product-image product-image-28">
+                    <div class="product-title">Aurora Wireless Earbuds</div>
+                    <div class="product-details">
+                        <span>💰 $249.99</span>
+                        <span>⭐ 4.8/5</span>
+                        <span>🏷️ Aurora Audio</span>
+                    </div>
+                    <div class="product-info">
+                        <div>🎨 8 Colors | 📏 4 Sizes</div>
+                        <div>🖼️ 4 Professional Images</div>
+                    </div>
+                    <div class="image-gallery">
+                        <img src="https://images.unsplash.com/photo-1484704849700-f032a568e944?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Aurora Wireless Earbuds" class="gallery-image" onclick="document.querySelector('.product-image-28').src=this.src"><img src="https://images.unsplash.com/photo-1590658165737-15a047b7cd5c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Aurora Wireless Earbuds" class="gallery-image" onclick="document.querySelector('.product-image-28').src=this.src"><img src="https://images.unsplash.com/photo-1580952299616-d8012d82d01f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Aurora Wireless Earbuds" class="gallery-image" onclick="document.querySelector('.product-image-28').src=this.src"><img src="https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Aurora Wireless Earbuds" class="gallery-image" onclick="document.querySelector('.product-image-28').src=this.src">
+                    </div>
+                </div>
+            
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Prismatic Phone Case" class="product-image product-image-29">
+                    <div class="product-title">Prismatic Phone Case</div>
+                    <div class="product-details">
+                        <span>💰 $49.99</span>
+                        <span>⭐ 4.4/5</span>
+                        <span>🏷️ Prism Tech</span>
+                    </div>
+                    <div class="product-info">
+                        <div>🎨 8 Colors | 📏 4 Sizes</div>
+                        <div>🖼️ 4 Professional Images</div>
+                    </div>
+                    <div class="image-gallery">
+                        <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Prismatic Phone Case" class="gallery-image" onclick="document.querySelector('.product-image-29').src=this.src"><img src="https://images.unsplash.com/photo-1592179900008-87ca74d83d8d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Prismatic Phone Case" class="gallery-image" onclick="document.querySelector('.product-image-29').src=this.src"><img src="https://images.unsplash.com/photo-1574944985070-8f3ebc6b79d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Prismatic Phone Case" class="gallery-image" onclick="document.querySelector('.product-image-29').src=this.src"><img src="https://images.unsplash.com/photo-1556656793-08538906a9f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Prismatic Phone Case" class="gallery-image" onclick="document.querySelector('.product-image-29').src=this.src">
+                    </div>
+                </div>
+            
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Smart Hologram Watch" class="product-image product-image-24">
+                    <div class="product-title">Smart Hologram Watch</div>
+                    <div class="product-details">
+                        <span>💰 $599.99</span>
+                        <span>⭐ 4.8/5</span>
+                        <span>🏷️ Future Tech</span>
+                    </div>
+                    <div class="product-info">
+                        <div>🎨 8 Colors | 📏 4 Sizes</div>
+                        <div>🖼️ 4 Professional Images</div>
+                    </div>
+                    <div class="image-gallery">
+                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Smart Hologram Watch" class="gallery-image" onclick="document.querySelector('.product-image-24').src=this.src"><img src="https://images.unsplash.com/photo-1594534475808-b18fc33b045e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Smart Hologram Watch" class="gallery-image" onclick="document.querySelector('.product-image-24').src=this.src"><img src="https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Smart Hologram Watch" class="gallery-image" onclick="document.querySelector('.product-image-24').src=this.src"><img src="https://images.unsplash.com/photo-1533139502658-0198f920d8e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Smart Hologram Watch" class="gallery-image" onclick="document.querySelector('.product-image-24').src=this.src">
+                    </div>
+                </div>
+            
+            </div>
+        </div>
+        
+        <div class="category-section">
+            <div class="category-title">🏷️ FOOTWEAR Collection (1 Products)</div>
+            <div class="products-grid">
+        
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Neon Athletic Performance Shoes" class="product-image product-image-26">
+                    <div class="product-title">Neon Athletic Performance Shoes</div>
+                    <div class="product-details">
+                        <span>💰 $159.99</span>
+                        <span>⭐ 4.6/5</span>
+                        <span>🏷️ Neon Athletics</span>
+                    </div>
+                    <div class="product-info">
+                        <div>🎨 10 Colors | 📏 7 Sizes</div>
+                        <div>🖼️ 4 Professional Images</div>
+                    </div>
+                    <div class="image-gallery">
+                        <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Neon Athletic Performance Shoes" class="gallery-image" onclick="document.querySelector('.product-image-26').src=this.src"><img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Neon Athletic Performance Shoes" class="gallery-image" onclick="document.querySelector('.product-image-26').src=this.src"><img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Neon Athletic Performance Shoes" class="gallery-image" onclick="document.querySelector('.product-image-26').src=this.src"><img src="https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Neon Athletic Performance Shoes" class="gallery-image" onclick="document.querySelector('.product-image-26').src=this.src">
+                    </div>
+                </div>
+            
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin: 40px 0; padding: 30px; background: rgba(255,255,255,0.1); border-radius: 20px;">
+            <h2>🎉 All Products Have Beautiful Images!</h2>
+            <p>✅ Professional photography for every product</p>
+            <p>✅ Multiple angles and styles available</p>
+            <p>✅ Optimized for AR and e-commerce display</p>
+            <p>✅ High-quality, consistent visual experience</p>
+        </div>
+    </div>
+</body>
+</html>
+    

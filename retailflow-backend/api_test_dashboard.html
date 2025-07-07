@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RetailFlowAI Tier 1 Backend API Tests</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .api-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            backdrop-filter: blur(10px);
+        }
+        .test-button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+            transition: all 0.3s;
+        }
+        .test-button:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+        }
+        .result-box {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 4px solid #4CAF50;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .error {
+            border-left-color: #f44336;
+        }
+        .success {
+            border-left-color: #4CAF50;
+        }
+        .loading {
+            border-left-color: #ff9800;
+        }
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin: 0;
+        }
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        .status-online { background: #4CAF50; }
+        .status-offline { background: #f44336; }
+        .status-loading { background: #ff9800; animation: pulse 1s infinite; }
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🏆 RetailFlowAI Tier 1 Backend API Tests</h1>
+        <h2>🎯 Walmart Sparkathon Victory Edition</h2>
+        <p><span id="statusIndicator" class="status-indicator status-loading"></span>Backend Status: <span id="backendStatus">Checking...</span></p>
+    </div>
+
+    <div class="api-section">
+        <h3>📊 Analytics API - Real-time Business Intelligence</h3>
+        <p>Powers the analytics dashboard with live business metrics</p>
+        <button class="test-button" onclick="testAnalytics()">Test Analytics API</button>
+        <div id="analyticsResult" class="result-box" style="display: none;"></div>
+    </div>
+
+    <div class="api-section">
+        <h3>🎯 Recommendations API - AI Product Suggestions</h3>
+        <p>Machine learning-powered personalized product recommendations</p>
+        <button class="test-button" onclick="testRecommendations()">Test Recommendations API</button>
+        <div id="recommendationsResult" class="result-box" style="display: none;"></div>
+    </div>
+
+    <div class="api-section">
+        <h3>💰 Cart Optimization API - Smart Price Optimization</h3>
+        <p>Dynamic pricing engine that maximizes savings and revenue</p>
+        <button class="test-button" onclick="testCartOptimization()">Test Cart Optimization API</button>
+        <div id="cartResult" class="result-box" style="display: none;"></div>
+    </div>
+
+    <div class="api-section">
+        <h3>🗣️ Voice Search API - Natural Language Processing</h3>
+        <p>Advanced voice search with intent detection and entity extraction</p>
+        <button class="test-button" onclick="testVoiceSearch()">Test Voice Search API</button>
+        <div id="voiceResult" class="result-box" style="display: none;"></div>
+    </div>
+
+    <div class="api-section">
+        <h3>🧪 Test All APIs</h3>
+        <button class="test-button" onclick="testAllAPIs()" style="background: #2196F3;">Run Complete Test Suite</button>
+        <div id="allTestsResult" class="result-box" style="display: none;"></div>
+    </div>
+
+    <script>
+        const BASE_URL = 'http://localhost:5000';
+
+        // Check backend status on page load
+        window.onload = function() {
+            checkBackendStatus();
+        };
+
+        async function checkBackendStatus() {
+            try {
+                const response = await fetch(`${BASE_URL}/api/health`);
+                if (response.ok) {
+                    document.getElementById('backendStatus').textContent = 'Online ✅';
+                    document.getElementById('statusIndicator').className = 'status-indicator status-online';
+                } else {
+                    document.getElementById('backendStatus').textContent = 'Issues detected ⚠️';
+                    document.getElementById('statusIndicator').className = 'status-indicator status-offline';
+                }
+            } catch (error) {
+                document.getElementById('backendStatus').textContent = 'Offline ❌';
+                document.getElementById('statusIndicator').className = 'status-indicator status-offline';
+            }
+        }
+
+        function showResult(elementId, data, isError = false) {
+            const element = document.getElementById(elementId);
+            element.style.display = 'block';
+            element.className = `result-box ${isError ? 'error' : 'success'}`;
+            element.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+        }
+
+        function showLoading(elementId) {
+            const element = document.getElementById(elementId);
+            element.style.display = 'block';
+            element.className = 'result-box loading';
+            element.innerHTML = '<p>🔄 Testing API...</p>';
+        }
+
+        async function testAnalytics() {
+            showLoading('analyticsResult');
+            try {
+                const response = await fetch(`${BASE_URL}/api/analytics`);
+                const data = await response.json();
+                showResult('analyticsResult', data);
+            } catch (error) {
+                showResult('analyticsResult', { error: error.message }, true);
+            }
+        }
+
+        async function testRecommendations() {
+            showLoading('recommendationsResult');
+            try {
+                const response = await fetch(`${BASE_URL}/api/recommendations`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        userId: 'sparkathon_judge_001',
+                        category: 'Electronics',
+                        priceRange: [50, 500]
+                    })
+                });
+                const data = await response.json();
+                showResult('recommendationsResult', data);
+            } catch (error) {
+                showResult('recommendationsResult', { error: error.message }, true);
+            }
+        }
+
+        async function testCartOptimization() {
+            showLoading('cartResult');
+            try {
+                const response = await fetch(`${BASE_URL}/api/cart/optimize`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        items: [
+                            { name: 'iPhone 15 Pro', price: 999.99, quantity: 1, category: 'Electronics' },
+                            { name: 'AirPods Pro', price: 249.99, quantity: 1, category: 'Electronics' },
+                            { name: 'Apple Watch Ultra', price: 799.99, quantity: 1, category: 'Electronics' }
+                        ],
+                        userTier: 'premium'
+                    })
+                });
+                const data = await response.json();
+                showResult('cartResult', data);
+            } catch (error) {
+                showResult('cartResult', { error: error.message }, true);
+            }
+        }
+
+        async function testVoiceSearch() {
+            showLoading('voiceResult');
+            try {
+                const response = await fetch(`${BASE_URL}/api/search/voice`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        text: 'find me the best wireless headphones under 200 dollars for gaming'
+                    })
+                });
+                const data = await response.json();
+                showResult('voiceResult', data);
+            } catch (error) {
+                showResult('voiceResult', { error: error.message }, true);
+            }
+        }
+
+        async function testAllAPIs() {
+            showLoading('allTestsResult');
+            
+            const tests = [
+                { name: 'Health Check', test: () => fetch(`${BASE_URL}/api/health`) },
+                { name: 'Analytics', test: () => fetch(`${BASE_URL}/api/analytics`) },
+                { name: 'Recommendations', test: () => fetch(`${BASE_URL}/api/recommendations`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ userId: 'test', category: 'Electronics' })
+                })},
+                { name: 'Cart Optimization', test: () => fetch(`${BASE_URL}/api/cart/optimize`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        items: [{ name: 'Test Product', price: 99.99, quantity: 1 }],
+                        userTier: 'standard'
+                    })
+                })},
+                { name: 'Voice Search', test: () => fetch(`${BASE_URL}/api/search/voice`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ text: 'find headphones' })
+                })}
+            ];
+
+            const results = [];
+            let passed = 0;
+
+            for (const test of tests) {
+                try {
+                    const response = await test.test();
+                    const status = response.ok ? '✅ PASS' : '❌ FAIL';
+                    if (response.ok) passed++;
+                    results.push(`${status} - ${test.name} (${response.status})`);
+                } catch (error) {
+                    results.push(`❌ FAIL - ${test.name} (${error.message})`);
+                }
+            }
+
+            const summary = `
+🧪 TEST SUITE COMPLETE
+=====================
+✅ Passed: ${passed}/${tests.length} tests
+❌ Failed: ${tests.length - passed}/${tests.length} tests
+
+Detailed Results:
+${results.join('\n')}
+
+${passed === tests.length ? 
+    '🎉 ALL TESTS PASSED! Backend ready for Sparkathon victory! 🏆' : 
+    '⚠️ Some tests failed. Check backend server status.'}
+            `;
+
+            showResult('allTestsResult', { summary });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🛒 Enhanced Walmart Chatbot - Mood-Based Product Search</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0071ce 0%, #004c91 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+        
+        .demo-header {
+            text-align: center;
+            margin-bottom: 30px;
+            animation: fadeInDown 1s ease-out;
+        }
+        
+        .demo-header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .demo-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin-bottom: 40px;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid rgba(252, 186, 3, 0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            background: rgba(252, 186, 3, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .feature-desc {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+        
+        .demo-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+        
+        .demo-btn {
+            background: linear-gradient(135deg, #fcba03 0%, #f0a500 100%);
+            color: #004c91;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(252, 186, 3, 0.3);
+        }
+        
+        .demo-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(252, 186, 3, 0.4);
+            background: linear-gradient(135deg, #fff 0%, #fcba03 100%);
+        }
+        
+        .mood-examples {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            max-width: 800px;
+            text-align: center;
+            border: 1px solid rgba(252, 186, 3, 0.3);
+            animation: fadeInUp 1s ease-out 0.9s both;
+        }
+        
+        .mood-examples h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #fcba03;
+        }
+        
+        .mood-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .mood-chip {
+            background: rgba(0, 113, 206, 0.8);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(252, 186, 3, 0.5);
+        }
+        
+        .status-panel {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+            text-align: center;
+            border: 1px solid rgba(252, 186, 3, 0.3);
+            animation: fadeInUp 1s ease-out 1.2s both;
+        }
+        
+        .status-title {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #fcba03;
+        }
+        
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .status-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .status-icon {
+            font-size: 1.2rem;
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .demo-header h1 {
+                font-size: 2rem;
+            }
+            
+            .demo-header p {
+                font-size: 1rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+                padding: 0 20px;
+            }
+            
+            .demo-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .mood-examples {
+                margin: 20px;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-header">
+        <h1>🛒 Enhanced Walmart Chatbot</h1>
+        <p>AI-Powered Mood Detection • Product Recommendations • Beautiful Walmart Design</p>
+    </div>
+    
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon">🎯</div>
+            <div class="feature-title">Smart Mood Detection</div>
+            <div class="feature-desc">AI analyzes your feelings and suggests perfect products for your current mood</div>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">🛍️</div>
+            <div class="feature-title">Product Images</div>
+            <div class="feature-desc">Real product images with prices, ratings, and detailed information</div>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">🎨</div>
+            <div class="feature-title">Walmart Design</div>
+            <div class="feature-desc">Beautiful Walmart-themed interface with signature blue and yellow colors</div>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">🥽</div>
+            <div class="feature-title">AR Integration</div>
+            <div class="feature-desc">AR-enabled products for virtual try-on experiences</div>
+        </div>
+    </div>
+    
+    <div class="mood-examples">
+        <h3>🧠 Try These Mood Examples:</h3>
+        <div class="mood-chips">
+            <div class="mood-chip">😊 "I feel happy today!"</div>
+            <div class="mood-chip">😢 "I'm feeling sad"</div>
+            <div class="mood-chip">😐 "I feel normal"</div>
+            <div class="mood-chip">👕 "I want something casual"</div>
+            <div class="mood-chip">💻 "Show me electronics"</div>
+            <div class="mood-chip">🌧️ "It's raining outside"</div>
+        </div>
+        <p style="opacity: 0.9; font-size: 0.95rem; line-height: 1.4;">
+            The AI will detect your mood and show relevant products with images, prices, and AR capabilities!
+        </p>
+    </div>
+    
+    <div class="demo-buttons">
+        <a href="http://localhost:3000" class="demo-btn">
+            🚀 Launch Chatbot
+        </a>
+        <button class="demo-btn" onclick="testBackend()">
+            🔧 Test Backend
+        </button>
+        <button class="demo-btn" onclick="checkStatus()">
+            📊 Check Status
+        </button>
+    </div>
+    
+    <div class="status-panel">
+        <div class="status-title">🔍 System Status</div>
+        <div class="status-grid">
+            <div class="status-item">
+                <span class="status-icon" id="backend-status">⏳</span>
+                <span>Backend API</span>
+            </div>
+            <div class="status-item">
+                <span class="status-icon" id="products-status">⏳</span>
+                <span>Products Database</span>
+            </div>
+            <div class="status-item">
+                <span class="status-icon" id="chatbot-status">⏳</span>
+                <span>Chatbot AI</span>
+            </div>
+            <div class="status-item">
+                <span class="status-icon" id="frontend-status">⏳</span>
+                <span>React Frontend</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function testBackend() {
+            try {
+                document.getElementById('backend-status').textContent = '⏳';
+                
+                const response = await fetch('http://localhost:5000/api/products');
+                if (response.ok) {
+                    const data = await response.json();
+                    const products = Array.isArray(data) ? data : data.products || [];
+                    
+                    document.getElementById('backend-status').textContent = '✅';
+                    document.getElementById('products-status').textContent = '✅';
+                    
+                    alert(`✅ Backend is working!\n📦 ${products.length} products available\n🎯 Chatbot ready for mood detection!`);
+                } else {
+                    throw new Error('API Error');
+                }
+            } catch (error) {
+                document.getElementById('backend-status').textContent = '❌';
+                document.getElementById('products-status').textContent = '❌';
+                alert('❌ Backend not running!\n\nPlease start the backend server:\npython client/server/app.py');
+            }
+        }
+        
+        async function checkStatus() {
+            document.getElementById('backend-status').textContent = '⏳';
+            document.getElementById('products-status').textContent = '⏳';
+            document.getElementById('chatbot-status').textContent = '⏳';
+            document.getElementById('frontend-status').textContent = '⏳';
+            
+            // Check backend
+            try {
+                const response = await fetch('http://localhost:5000/api/products');
+                if (response.ok) {
+                    document.getElementById('backend-status').textContent = '✅';
+                    document.getElementById('products-status').textContent = '✅';
+                } else {
+                    throw new Error('Backend error');
+                }
+            } catch {
+                document.getElementById('backend-status').textContent = '❌';
+                document.getElementById('products-status').textContent = '❌';
+            }
+            
+            // Check chatbot
+            try {
+                const response = await fetch('http://localhost:5000/api/chatbot', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: 'test' })
+                });
+                if (response.ok) {
+                    document.getElementById('chatbot-status').textContent = '✅';
+                } else {
+                    throw new Error('Chatbot error');
+                }
+            } catch {
+                document.getElementById('chatbot-status').textContent = '❌';
+            }
+            
+            // Check frontend
+            try {
+                const response = await fetch('http://localhost:3000');
+                if (response.ok) {
+                    document.getElementById('frontend-status').textContent = '✅';
+                } else {
+                    throw new Error('Frontend error');
+                }
+            } catch {
+                document.getElementById('frontend-status').textContent = '❌';
+            }
+        }
+        
+        // Auto-check status on load
+        window.addEventListener('load', () => {
+            setTimeout(checkStatus, 1000);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RetailFlowAI API Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background: linear-gradient(135deg, #87ceeb, #add8e6); }
+        .container { max-width: 800px; margin: 0 auto; background: white; padding: 20px; border-radius: 10px; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
+        button { padding: 10px 15px; margin: 5px; cursor: pointer; background: #007bff; color: white; border: none; border-radius: 5px; }
+        button:hover { background: #0056b3; }
+        .result { background: #f8f9fa; padding: 10px; margin: 10px 0; border-radius: 5px; }
+        .error { background: #ffe6e6; color: red; }
+        .success { background: #e6ffe6; color: green; }
+        input, textarea { width: 100%; padding: 8px; margin: 5px 0; border: 1px solid #ddd; border-radius: 3px; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; margin-top: 10px; }
+        .product-card { border: 1px solid #ddd; border-radius: 5px; padding: 10px; }
+        .product-card img { width: 100%; height: 150px; object-fit: cover; border-radius: 3px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🛍️ RetailFlowAI API Test Dashboard</h1>
+        
+        <div class="test-section">
+            <h3>📦 Test Chatbot Product Recommendations</h3>
+            <input type="text" id="moodInput" placeholder="Enter your mood (e.g., happy, rainy, party)" value="happy">
+            <button onclick="testChatbot()">Get Recommendations</button>
+            <div id="chatbotResult" class="result"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>👤 Admin - View All Products</h3>
+            <button onclick="getAllProducts()">Load All Products</button>
+            <div id="productsResult" class="result"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>➕ Admin - Add New Product</h3>
+            <input type="text" id="productName" placeholder="Product Name" value="Test Smart Watch">
+            <input type="text" id="productCategory" placeholder="Category" value="Electronics">
+            <select id="productMood">
+                <option value="general">General</option>
+                <option value="happy">Happy</option>
+                <option value="fitness">Fitness</option>
+                <option value="party">Party</option>
+                <option value="professional">Professional</option>
+                <option value="casual">Casual</option>
+                <option value="rainy">Rainy</option>
+                <option value="sunny">Sunny</option>
+            </select>
+            <input type="number" id="productPrice" placeholder="Price" value="299.99" step="0.01">
+            <input type="text" id="productEmoji" placeholder="Emoji" value="⌚">
+            <input type="url" id="productImage" placeholder="Image URL" value="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500">
+            <textarea id="productDescription" placeholder="Description">Smart fitness tracking watch with AR features</textarea>
+            <button onclick="addProduct()">Add Product</button>
+            <div id="addResult" class="result"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>🔍 Test Individual Product Operations</h3>
+            <input type="number" id="productId" placeholder="Product ID" value="1">
+            <button onclick="getProduct()">Get Product</button>
+            <button onclick="deleteProduct()">Delete Product</button>
+            <div id="productOpResult" class="result"></div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:5000';
+
+        async function testChatbot() {
+            const mood = document.getElementById('moodInput').value;
+            const resultDiv = document.getElementById('chatbotResult');
+            
+            try {
+                resultDiv.innerHTML = '⏳ Testing chatbot...';
+                const response = await fetch(`${API_BASE}/api/products`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ mood })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    let html = `<div class="success">✅ Chatbot working! Detected mood: ${data.mood}</div>`;
+                    html += `<p>${data.message}</p>`;
+                    
+                    if (data.items && data.items.length > 0) {
+                        html += '<div class="product-grid">';
+                        data.items.slice(0, 6).forEach(item => {
+                            if (typeof item === 'object' && item.image_url) {
+                                html += `
+                                    <div class="product-card">
+                                        <img src="${item.image_url}" alt="${item.name}" onerror="this.src='https://via.placeholder.com/200x150?text=No+Image'">
+                                        <h5>${item.name}</h5>
+                                        <p>$${item.price}</p>
+                                        <p>${item.ar_enabled ? '🥽 AR' : '📷 Image'}</p>
+                                    </div>
+                                `;
+                            }
+                        });
+                        html += '</div>';
+                    }
+                    
+                    resultDiv.innerHTML = html;
+                } else {
+                    resultDiv.innerHTML = `<div class="error">❌ Error: ${data.error}</div>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="error">❌ Connection error: ${error.message}</div>`;
+            }
+        }
+
+        async function getAllProducts() {
+            const resultDiv = document.getElementById('productsResult');
+            
+            try {
+                resultDiv.innerHTML = '⏳ Loading products...';
+                const response = await fetch(`${API_BASE}/api/admin/products`);
+                const data = await response.json();
+                
+                if (response.ok) {
+                    const products = data.products || [];
+                    let html = `<div class="success">✅ Found ${products.length} products</div>`;
+                    
+                    if (products.length > 0) {
+                        html += '<div class="product-grid">';
+                        products.slice(0, 8).forEach(product => {
+                            html += `
+                                <div class="product-card">
+                                    <img src="${product.image_url || 'https://via.placeholder.com/200x150?text=No+Image'}" alt="${product.name}">
+                                    <h5>${product.emoji} ${product.name}</h5>
+                                    <p>ID: ${product.id} | $${product.price}</p>
+                                    <p>📂 ${product.category}</p>
+                                    <p>🎭 ${product.mood_category}</p>
+                                    <p>${product.ar_enabled ? '🥽 AR Enabled' : '📷 Image Only'}</p>
+                                </div>
+                            `;
+                        });
+                        html += '</div>';
+                    }
+                    
+                    resultDiv.innerHTML = html;
+                } else {
+                    resultDiv.innerHTML = `<div class="error">❌ Error loading products</div>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="error">❌ Connection error: ${error.message}</div>`;
+            }
+        }
+
+        async function addProduct() {
+            const resultDiv = document.getElementById('addResult');
+            
+            const productData = {
+                name: document.getElementById('productName').value,
+                category: document.getElementById('productCategory').value,
+                mood_category: document.getElementById('productMood').value,
+                price: parseFloat(document.getElementById('productPrice').value),
+                emoji: document.getElementById('productEmoji').value,
+                image_url: document.getElementById('productImage').value,
+                description: document.getElementById('productDescription').value,
+                brand: 'Test Brand',
+                rating: 4.5,
+                tags: 'test,smart,watch',
+                is_trending: true,
+                stock_quantity: 50,
+                ar_enabled: true,
+                ar_model_url: 'https://ar-models.com/watch3d.glb',
+                ar_preview_url: 'https://ar-preview.com/watch-ar.jpg',
+                three_d_model: 'watch_3d.glb',
+                multiple_images: ['https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500'],
+                size_chart: {'One Size': 'Universal'},
+                color_variants: ['Black', 'Silver', 'Gold']
+            };
+            
+            try {
+                resultDiv.innerHTML = '⏳ Adding product...';
+                const response = await fetch(`${API_BASE}/api/admin/products`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(productData)
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    resultDiv.innerHTML = `<div class="success">✅ Product added with ID: ${data.product_id}</div>`;
+                } else {
+                    resultDiv.innerHTML = `<div class="error">❌ Error: ${data.error}</div>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="error">❌ Connection error: ${error.message}</div>`;
+            }
+        }
+
+        async function getProduct() {
+            const productId = document.getElementById('productId').value;
+            const resultDiv = document.getElementById('productOpResult');
+            
+            try {
+                resultDiv.innerHTML = '⏳ Getting product...';
+                const response = await fetch(`${API_BASE}/api/admin/products`);
+                const data = await response.json();
+                
+                if (response.ok) {
+                    const product = data.products.find(p => p.id == productId);
+                    if (product) {
+                        resultDiv.innerHTML = `
+                            <div class="success">✅ Product found:</div>
+                            <div class="product-card">
+                                <img src="${product.image_url}" alt="${product.name}">
+                                <h4>${product.emoji} ${product.name}</h4>
+                                <p>ID: ${product.id} | Price: $${product.price}</p>
+                                <p>Category: ${product.category} | Mood: ${product.mood_category}</p>
+                                <p>AR: ${product.ar_enabled ? '🥽 Yes' : '❌ No'}</p>
+                            </div>
+                        `;
+                    } else {
+                        resultDiv.innerHTML = `<div class="error">❌ Product with ID ${productId} not found</div>`;
+                    }
+                } else {
+                    resultDiv.innerHTML = `<div class="error">❌ Error loading products</div>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="error">❌ Connection error: ${error.message}</div>`;
+            }
+        }
+
+        async function deleteProduct() {
+            const productId = document.getElementById('productId').value;
+            const resultDiv = document.getElementById('productOpResult');
+            
+            if (!confirm(`Delete product with ID ${productId}?`)) return;
+            
+            try {
+                resultDiv.innerHTML = '⏳ Deleting product...';
+                const response = await fetch(`${API_BASE}/api/admin/products/${productId}`, {
+                    method: 'DELETE'
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok && data.success) {
+                    resultDiv.innerHTML = `<div class="success">✅ ${data.message}</div>`;
+                } else {
+                    resultDiv.innerHTML = `<div class="error">❌ Error: ${data.message || data.error}</div>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="error">❌ Connection error: ${error.message}</div>`;
+            }
+        }
+
+        // Auto-load products on page load
+        window.onload = function() {
+            getAllProducts();
+        };
+    </script>
+</body>
+</html>

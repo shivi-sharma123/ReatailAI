@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Chatbot API</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .container { max-width: 800px; margin: 0 auto; }
+        .test-btn { background: #007bff; color: white; padding: 10px 20px; margin: 5px; border: none; border-radius: 5px; cursor: pointer; }
+        .result { background: #f8f9fa; padding: 15px; margin: 10px 0; border-radius: 5px; border-left: 4px solid #007bff; }
+        .product { border: 1px solid #ddd; padding: 10px; margin: 5px 0; border-radius: 5px; }
+        .product img { width: 100px; height: 100px; object-fit: cover; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 Chatbot API Test</h1>
+        <p>Test the chatbot API endpoints directly</p>
+        
+        <div>
+            <button class="test-btn" onclick="testMood('I am feeling happy')">Test Happy Mood</button>
+            <button class="test-btn" onclick="testMood('I am sad')">Test Sad Mood</button>
+            <button class="test-btn" onclick="testMood('It is raining')">Test Rainy Mood</button>
+            <button class="test-btn" onclick="testMood('Normal day')">Test Natural Mood</button>
+        </div>
+        
+        <div id="results"></div>
+    </div>
+
+    <script>
+        async function testMood(message) {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '<p>🔄 Testing: ' + message + '</p>';
+            
+            try {
+                const response = await fetch('http://localhost:5000/api/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ message: message })
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                const data = await response.json();
+                
+                let html = `
+                    <div class="result">
+                        <h3>✅ Success!</h3>
+                        <p><strong>Message:</strong> ${message}</p>
+                        <p><strong>Detected Mood:</strong> ${data.mood}</p>
+                        <p><strong>Bot Response:</strong> ${data.message}</p>
+                        <p><strong>Products Found:</strong> ${data.products ? data.products.length : 0}</p>
+                `;
+                
+                if (data.products && data.products.length > 0) {
+                    html += '<h4>🛍️ Products:</h4>';
+                    data.products.forEach(product => {
+                        html += `
+                            <div class="product">
+                                <img src="${product.image_url || product.image}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/100x100/87CEEB/ffffff?text=🛍️'">
+                                <strong>${product.name}</strong> ${product.emoji || ''}
+                                <br>Price: $${product.price}
+                                <br>Brand: ${product.brand}
+                                <br>Rating: ⭐ ${product.rating}/5
+                                <br>${product.description}
+                            </div>
+                        `;
+                    });
+                }
+                
+                html += '</div>';
+                resultsDiv.innerHTML = html;
+                
+            } catch (error) {
+                resultsDiv.innerHTML = `
+                    <div class="result" style="border-left-color: #dc3545;">
+                        <h3>❌ Error</h3>
+                        <p><strong>Message:</strong> ${message}</p>
+                        <p><strong>Error:</strong> ${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>
