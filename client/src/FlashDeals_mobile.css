@@ -7,8 +7,8 @@
   
   .deals-header {
     flex-direction: column;
-    gap: 2rem;
-    padding: 2rem;
+    gap: 1.5rem;
+    padding: 1.5rem;
     border-radius: 16px 16px 0 0;
   }
   
@@ -27,14 +27,14 @@
   }
   
   .live-deals-grid {
-    padding: 1.5rem;
-    gap: 1.5rem;
+    padding: 1.2rem;
+    gap: 1.2rem;
   }
   
   .live-deal-card {
-    flex: 0 0 280px !important; /* Smaller cards on mobile */
-    height: 400px !important;
-    min-width: 280px;
+    flex: 0 0 260px !important; /* Smaller cards on mobile */
+    height: 350px !important; /* Reduced height on mobile */
+    min-width: 260px;
   }
   
   .scroll-indicator {

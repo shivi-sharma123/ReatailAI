@@ -246,10 +246,6 @@ function Auth({ onLoginSuccess }) {
             </div>
 
             <div className="social-buttons">
-              <button type="button" className="social-button google">
-                <span className="social-icon">🌐</span>
-                Google
-              </button>
               <button type="button" className="social-button facebook">
                 <span className="social-icon">📘</span>
                 Facebook
@@ -275,15 +271,6 @@ function Auth({ onLoginSuccess }) {
                 <span>Or continue with</span>
               </div>
               <div className="social-buttons">
-                <button 
-                  type="button" 
-                  className="social-button google-btn"
-                  onClick={handleGoogleSignIn}
-                  disabled={loading}
-                >
-                  <span>G</span>
-                  {loading ? 'Signing in...' : 'Google'}
-                </button>
                 <button 
                   type="button" 
                   className="social-button apple-btn"

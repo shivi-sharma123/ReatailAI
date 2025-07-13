@@ -1,0 +1,171 @@
+/* Walmart Hero Section - Clean & Real Look */
+
+.amazon-fashion-hero-section {
+  width: 100%;
+  background: #ffffff;
+  color: #333;
+  font-family: "Amazon Ember", Arial, sans-serif;
+  overflow: hidden;
+}
+
+/* Main Fashion Hero Banner */
+.fashion-hero-banner {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  margin-bottom: 0;
+}
+
+.hero-main-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.hero-content-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 50px;
+}
+
+.hero-text {
+  max-width: 500px;
+  text-align: left;
+}
+
+.hero-text h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin: 0 0 15px 0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  color: white;
+}
+
+.hero-text p {
+  font-size: 1.3rem;
+  margin: 0 0 25px 0;
+  color: white;
+  font-weight: 400;
+}
+
+.shop-now-btn {
+  background: #0071ce;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.shop-now-btn:hover {
+  background: #004c87;
+}
+
+/* Retail Categories Section */
+.fashion-categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  background: #f8f9fa;
+  padding: 40px 20px;
+}
+
+.category-item {
+  text-align: center;
+  padding: 30px 20px;
+  background: white;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  border: 1px solid #e9ecef;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.category-item:hover {
+  background: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.category-item h4 {
+  font-size: 1.4rem;
+  margin: 0 0 10px 0;
+  color: #0071ce;
+  font-weight: 600;
+}
+
+.category-item p {
+  font-size: 1rem;
+  margin: 0;
+  color: #666;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .fashion-hero-banner {
+    height: 400px;
+  }
+  
+  .hero-content-overlay {
+    padding: 0 20px;
+    text-align: center;
+    justify-content: center;
+  }
+  
+  .hero-text {
+    text-align: center;
+  }
+  
+  .hero-text h1 {
+    font-size: 2.5rem;
+  }
+  
+  .hero-text p {
+    font-size: 1.1rem;
+  }
+  
+  .fashion-categories {
+    grid-template-columns: 1fr;
+    padding: 30px 15px;
+  }
+  
+  .category-item {
+    margin: 5px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .fashion-hero-banner {
+    height: 350px;
+  }
+  
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+  
+  .hero-text p {
+    font-size: 1rem;
+  }
+  
+  .shop-now-btn {
+    padding: 12px 25px;
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "retailflow-ai",
+  "version": "1.0.0",
+  "description": "RetailFlow AI - Amazon-style Walmart Shopping Experience with AR and AI Chatbot",
+  "main": "index.js",
+  "scripts": {
+    "start": "cd client && npm start",
+    "build": "cd client && npm run build",
+    "install-client": "cd client && npm install",
+    "dev": "concurrently \"cd retailflow-backend && python app.py\" \"cd client && npm start\"",
+    "backend": "cd retailflow-backend && python app.py"
+  },
+  "keywords": [
+    "retail",
+    "e-commerce",
+    "ar",
+    "ai",
+    "walmart",
+    "shopping",
+    "react",
+    "three.js"
+  ],
+  "author": "RetailFlow AI Team",
+  "license": "MIT",
+  "dependencies": {
+    "concurrently": "^7.6.0"
+  }
+}

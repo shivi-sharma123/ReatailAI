@@ -1,0 +1,900 @@
+/* Impressive Walmart Login Page - Premium Design */
+
+/* CSS Variables for Walmart Brand Colors */
+:root {
+  --walmart-blue: #0071ce;
+  --walmart-yellow: #ffc220;
+  --walmart-orange: #ff6900;
+  --walmart-dark-blue: #004c91;
+  --walmart-light-blue: #4f98cd;
+  --walmart-gray: #f0f0f0;
+  --walmart-dark-gray: #333333;
+  --walmart-white: #ffffff;
+  --walmart-shadow: rgba(0, 113, 206, 0.1);
+  --walmart-gradient: linear-gradient(135deg, var(--walmart-blue), var(--walmart-light-blue));
+  --walmart-text: #2c3e50;
+  --success-color: #27ae60;
+  --error-color: #e74c3c;
+  --warning-color: #f39c12;
+}
+
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+  color: var(--walmart-text);
+  overflow-x: hidden;
+}
+
+/* Main Container */
+.walmart-login-container {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  overflow: hidden;
+}
+
+/* Animated Background */
+.walmart-login-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.floating-shapes {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.shape {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  animation: float 6s ease-in-out infinite;
+}
+
+.shape-1 {
+  width: 80px;
+  height: 80px;
+  top: 10%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.shape-2 {
+  width: 120px;
+  height: 120px;
+  top: 20%;
+  right: 10%;
+  animation-delay: 1s;
+}
+
+.shape-3 {
+  width: 60px;
+  height: 60px;
+  bottom: 20%;
+  left: 15%;
+  animation-delay: 2s;
+}
+
+.shape-4 {
+  width: 100px;
+  height: 100px;
+  bottom: 10%;
+  right: 20%;
+  animation-delay: 3s;
+}
+
+.shape-5 {
+  width: 40px;
+  height: 40px;
+  top: 50%;
+  left: 50%;
+  animation-delay: 4s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-20px) rotate(120deg);
+  }
+  66% {
+    transform: translateY(20px) rotate(240deg);
+  }
+}
+
+/* Main Content */
+.walmart-login-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  width: 90%;
+  max-width: 1200px;
+  min-height: 600px;
+  background: var(--walmart-white);
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.walmart-login-content.animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Left Side - Branding */
+.walmart-login-left {
+  flex: 1;
+  background: var(--walmart-gradient);
+  padding: 60px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.walmart-login-left::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)" /></svg>');
+  opacity: 0.3;
+}
+
+.walmart-branding {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: white;
+}
+
+.walmart-logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.walmart-spark {
+  font-size: 48px;
+  color: var(--walmart-yellow);
+  animation: sparkle 2s ease-in-out infinite;
+  text-shadow: 0 0 20px rgba(255, 194, 32, 0.5);
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    transform: rotate(0deg) scale(1);
+    text-shadow: 0 0 20px rgba(255, 194, 32, 0.5);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.1);
+    text-shadow: 0 0 30px rgba(255, 194, 32, 0.8);
+  }
+}
+
+.walmart-title {
+  font-size: 42px;
+  font-weight: 900;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  letter-spacing: -1px;
+}
+
+.walmart-subtitle {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--walmart-yellow);
+  margin-bottom: 20px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.walmart-description {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+  margin-bottom: 40px;
+  max-width: 400px;
+}
+
+.walmart-features {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px 25px;
+  border-radius: 50px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 250px;
+}
+
+.feature-item:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateX(10px);
+}
+
+.feature-icon {
+  font-size: 24px;
+}
+
+/* Right Side - Login Form */
+.walmart-login-right {
+  flex: 1;
+  padding: 60px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-form-container {
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.login-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--walmart-text);
+  margin-bottom: 8px;
+}
+
+.login-subtitle {
+  font-size: 16px;
+  color: #7f8c8d;
+}
+
+/* Error Notification */
+.error-notification {
+  background: linear-gradient(135deg, var(--error-color), #c0392b);
+  color: white;
+  padding: 15px 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: slideIn 0.3s ease;
+  box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+}
+
+/* Success Notification */
+.success-notification {
+  background: linear-gradient(135deg, var(--success-color), #27ae60);
+  color: white;
+  padding: 15px 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: slideIn 0.3s ease;
+  box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.error-icon, .success-icon {
+  font-size: 18px;
+  animation: bounce 0.6s ease-in-out;
+}
+
+@keyframes bounce {
+  0%, 20%, 60%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-5px);
+  }
+  80% {
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(66, 133, 244, 0.7);
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(66, 133, 244, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(66, 133, 244, 0);
+  }
+}
+
+/* Form Styles */
+.walmart-login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--walmart-text);
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.login-input {
+  width: 100%;
+  padding: 16px 50px 16px 20px;
+  border: 2px solid #e1e8ed;
+  border-radius: 12px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  background: #f8f9fa;
+  color: var(--walmart-text);
+}
+
+.login-input:focus {
+  outline: none;
+  border-color: var(--walmart-blue);
+  background: white;
+  box-shadow: 0 0 0 4px rgba(0, 113, 206, 0.1);
+  transform: translateY(-2px);
+}
+
+.login-input::placeholder {
+  color: #95a5a6;
+}
+
+.input-icon {
+  position: absolute;
+  right: 16px;
+  color: #95a5a6;
+  transition: color 0.3s ease;
+}
+
+.login-input:focus ~ .input-icon {
+  color: var(--walmart-blue);
+}
+
+.password-toggle {
+  position: absolute;
+  right: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 4px;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+.password-toggle:hover {
+  background: rgba(0, 113, 206, 0.1);
+}
+
+/* Login Options */
+.login-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--walmart-text);
+}
+
+.remember-me input[type="checkbox"] {
+  display: none;
+}
+
+.checkmark {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.remember-me input[type="checkbox"]:checked ~ .checkmark {
+  background: var(--walmart-blue);
+  border-color: var(--walmart-blue);
+}
+
+.remember-me input[type="checkbox"]:checked ~ .checkmark::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.forgot-password {
+  color: var(--walmart-blue);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.forgot-password:hover {
+  color: var(--walmart-dark-blue);
+  text-decoration: underline;
+}
+
+/* Login Button */
+.login-button {
+  background: var(--walmart-gradient);
+  color: white;
+  border: none;
+  padding: 16px 32px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 113, 206, 0.3);
+}
+
+.login-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.login-button:hover::before {
+  left: 100%;
+}
+
+.login-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 113, 206, 0.4);
+}
+
+.login-button:active {
+  transform: translateY(0);
+}
+
+.login-button.loading {
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.login-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Social Login */
+.social-login {
+  margin-top: 30px;
+}
+
+.divider {
+  text-align: center;
+  margin: 20px 0;
+  position: relative;
+}
+
+.divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #e1e8ed;
+}
+
+.divider span {
+  background: white;
+  padding: 0 20px;
+  color: #7f8c8d;
+  font-size: 14px;
+}
+
+.social-buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.social-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border: 2px solid #e1e8ed;
+  border-radius: 12px;
+  background: white;
+  color: var(--walmart-text);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.social-btn:hover {
+  border-color: var(--walmart-blue);
+  background: #f8f9fa;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.social-btn.google:hover {
+  border-color: #4285F4;
+}
+
+.social-btn.facebook:hover {
+  border-color: #1877F2;
+}
+
+.social-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+  transform: none;
+}
+
+.social-btn.loading {
+  pointer-events: none;
+}
+
+.google-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid #4285F4;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Signup Link */
+.signup-link {
+  text-align: center;
+  margin-top: 25px;
+  font-size: 14px;
+  color: #7f8c8d;
+}
+
+.create-account {
+  color: var(--walmart-blue);
+  text-decoration: none;
+  font-weight: 600;
+  margin-left: 5px;
+  transition: color 0.3s ease;
+}
+
+.create-account:hover {
+  color: var(--walmart-dark-blue);
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+  .walmart-login-content {
+    flex-direction: column;
+    width: 95%;
+    max-width: 500px;
+  }
+
+  .walmart-login-left {
+    padding: 40px 30px;
+  }
+
+  .walmart-title {
+    font-size: 32px;
+  }
+
+  .walmart-subtitle {
+    font-size: 18px;
+  }
+
+  .walmart-features {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .feature-item {
+    max-width: 200px;
+  }
+
+  .walmart-login-right {
+    padding: 40px 30px;
+  }
+}
+
+@media (max-width: 568px) {
+  .walmart-login-container {
+    padding: 20px;
+  }
+
+  .walmart-login-content {
+    width: 100%;
+    border-radius: 16px;
+  }
+
+  .walmart-login-left,
+  .walmart-login-right {
+    padding: 30px 20px;
+  }
+
+  .login-title {
+    font-size: 24px;
+  }
+
+  .walmart-title {
+    font-size: 28px;
+  }
+
+  .social-buttons {
+    flex-direction: column;
+  }
+
+  .feature-item {
+    max-width: 100%;
+  }
+}
+
+/* Enhanced Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .walmart-login-content {
+    border: 3px solid var(--walmart-text);
+  }
+  
+  .login-input {
+    border-width: 3px;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .walmart-login-container {
+    background: white;
+  }
+  
+  .floating-shapes,
+  .social-login {
+    display: none;
+  }
+}
+
+.walmart-cart-img {
+  width: 100%;
+  max-width: 320px;
+  border-radius: 16px;
+  margin: 0 auto 18px auto;
+  display: block;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.13);
+  object-fit: cover;
+}
+.walmart-login-right {
+  flex: 1;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 350px;
+  padding: 40px 32px;
+  box-shadow: -2px 0 12px rgba(0,0,0,0.04);
+  border-radius: 0 16px 16px 0;
+}
+.walmart-logo {
+  width: 90px;
+  margin-bottom: 32px;
+  margin-top: -30px;
+}
+.walmart-login-form {
+  width: 100%;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 36px 32px 28px 32px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+  margin-top: 0;
+}
+.walmart-login-form h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 18px;
+  color: #0071ce;
+  letter-spacing: 1px;
+}
+.walmart-login-form label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #222;
+  margin-bottom: 4px;
+}
+.required {
+  color: #e53935;
+  margin-left: 2px;
+}
+.walmart-login-form input {
+  padding: 12px 14px;
+  border: 1.5px solid #cfd8dc;
+  border-radius: 8px;
+  font-size: 1.05rem;
+  outline: none;
+  transition: border 0.2s;
+  background: #f9f9fc;
+}
+.walmart-login-form input:focus {
+  border-color: #0071ce;
+  background: #fff;
+}
+.input-error {
+  border-color: #e53935 !important;
+  background: #fff0f0 !important;
+}
+.error-msg {
+  color: #e53935;
+  font-size: 0.95rem;
+  margin-top: -10px;
+  margin-bottom: 6px;
+}
+.walmart-login-links {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 8px;
+}
+.forgot-password {
+  color: #0071ce;
+  font-size: 0.98rem;
+  text-decoration: none;
+  font-weight: 500;
+}
+.forgot-password:hover {
+  text-decoration: underline;
+}
+.walmart-login-btn {
+  background: linear-gradient(90deg, #0071ce 0%, #00c6fb 100%);
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  padding: 14px 0;
+  margin-top: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.walmart-login-btn:hover {
+  background: linear-gradient(90deg, #005fa3 0%, #00b4d8 100%);
+  box-shadow: 0 4px 16px rgba(0,113,206,0.13);
+}
+.walmart-login-footer {
+  margin-top: 18px;
+  text-align: center;
+  font-size: 1rem;
+  color: #222;
+}
+.create-account {
+  color: #0071ce;
+  font-weight: 600;
+  text-decoration: none;
+  margin-left: 4px;
+}
+.create-account:hover {
+  text-decoration: underline;
+}
+@media (max-width: 900px) {
+  .walmart-login-root {
+    flex-direction: column;
+  }
+  .walmart-login-left, .walmart-login-right {
+    min-width: 100vw;
+    width: 100vw;
+    height: 50vh;
+    box-shadow: none;
+    border-radius: 0;
+  }
+  .walmart-login-overlay {
+    padding: 30px 16px;
+  }
+  .walmart-login-form {
+    padding: 18px 8px 12px 8px;
+  }
+}

@@ -12,7 +12,7 @@ import os
 logger = logging.getLogger(__name__)
 
 # Database path - use absolute path to ensure connection
-DB_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'retailflow.db')
+DB_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'client', 'retailflow.db')
 
 def get_db_connection():
     """Get database connection with error handling."""
@@ -38,7 +38,7 @@ def register_enhanced_routes(app):
             cursor = conn.cursor()
             cursor.execute('''
                 SELECT id, name, category, price, description, emoji, image_url, brand, rating, 
-                       images, colors, sizes, quality_tiers, customization_options, interactive_features
+                       is_trending, stock_quantity, ar_enabled, tags, mood_category, images, colors, sizes
                 FROM products 
                 WHERE ar_enabled = 1
                 ORDER BY is_trending DESC, rating DESC
@@ -56,12 +56,14 @@ def register_enhanced_routes(app):
                     'image_url': row[6],
                     'brand': row[7],
                     'rating': row[8],
-                    'images': json.loads(row[9]) if row[9] else [],
-                    'colors': json.loads(row[10]) if row[10] else [],
-                    'sizes': json.loads(row[11]) if row[11] else [],
-                    'quality_tiers': json.loads(row[12]) if row[12] else [],
-                    'customization_options': json.loads(row[13]) if row[13] else {},
-                    'interactive_features': json.loads(row[14]) if row[14] else {}
+                    'is_trending': bool(row[9]),
+                    'stock_quantity': row[10],
+                    'ar_enabled': bool(row[11]),
+                    'tags': row[12],
+                    'mood_category': row[13],
+                    'images': json.loads(row[14]) if row[14] else [row[6]],
+                    'colors': json.loads(row[15]) if row[15] else [],
+                    'sizes': json.loads(row[16]) if row[16] else []
                 }
                 products.append(product)
             

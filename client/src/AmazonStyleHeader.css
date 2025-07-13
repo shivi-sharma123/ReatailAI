@@ -1,0 +1,735 @@
+/* Amazon-style Header CSS */
+.amazon-style-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Top Navigation Bar */
+.navbar-top {
+  background: linear-gradient(to bottom, #232f3e 0%, #37475a 100%);
+  padding: 8px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+/* Logo Section */
+.walmart-logo-section {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  padding-top: 2px;
+}
+
+.walmart-logo {
+  font-size: 28px;
+  font-weight: 900;
+  color: #ffc220;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  margin-top: 4px;
+  line-height: 1.2;
+}
+
+.walmart-logo:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.02);
+}
+
+.logo-spark {
+  color: #ffc220;
+  font-size: 24px;
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(90deg) scale(1.1); }
+  50% { transform: rotate(180deg) scale(1); }
+  75% { transform: rotate(270deg) scale(1.1); }
+}
+
+/* Delivery Location */
+.delivery-location {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #ccc;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  position: relative;
+  margin-left: 10px;
+}
+
+.delivery-location:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.location-icon {
+  font-size: 16px;
+  color: white;
+}
+
+.location-text {
+  line-height: 1.2;
+}
+
+.location-label {
+  font-size: 12px;
+  color: #ccc;
+}
+
+.location-address {
+  font-size: 14px;
+  color: white;
+  font-weight: bold;
+}
+
+.location-popup {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  color: #333;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  font-size: 12px;
+  white-space: nowrap;
+  margin-top: 5px;
+  z-index: 1001;
+}
+
+.location-popup::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 20px;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid white;
+}
+
+/* Search Bar */
+.amazon-search-container {
+  flex: 1;
+  max-width: 600px;
+  margin: 0 15px;
+}
+
+.search-bar-wrapper {
+  display: flex;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.search-category-dropdown {
+  background: #f3f3f3;
+  border: none;
+  padding: 10px 12px;
+  font-size: 12px;
+  color: #333;
+  border-right: 1px solid #ddd;
+  cursor: pointer;
+  min-width: 60px;
+  outline: none;
+}
+
+.search-category-dropdown:hover {
+  background: #e9e9e9;
+}
+
+.search-input {
+  flex: 1;
+  border: none;
+  padding: 10px 12px;
+  font-size: 16px;
+  outline: none;
+  background: white;
+}
+
+.search-input::placeholder {
+  color: #999;
+}
+
+.search-button {
+  background: #ffc220;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #232f3e;
+  font-weight: bold;
+}
+
+.search-button:hover {
+  background: #ff9900;
+}
+
+.search-icon {
+  font-size: 18px;
+}
+
+/* Right Navigation */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-item {
+  color: white;
+  text-decoration: none;
+  font-size: 12px;
+  line-height: 1.2;
+  padding: 8px 10px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 60px;
+}
+
+.nav-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffc220;
+}
+
+.nav-item-primary {
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.nav-item-secondary {
+  font-weight: normal;
+  font-size: 11px;
+  margin-top: 2px;
+  color: #ccc;
+}
+
+.flag {
+  font-size: 16px;
+  margin-bottom: 2px;
+}
+
+/* Cart */
+.cart-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.cart-container:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.cart-icon-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.cart-icon {
+  font-size: 24px;
+  color: white;
+}
+
+.cart-count {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #ff6900;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+  min-width: 20px;
+}
+
+.cart-text {
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* Secondary Navigation */
+.navbar-bottom {
+  background: #37475a;
+  padding: 8px 0;
+  border-top: 1px solid #3a4553;
+}
+
+.nav-bottom-content {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  overflow-x: auto;
+}
+
+.nav-category-item {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.nav-category-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffc220;
+}
+
+.nav-category-item.active {
+  background: #0071ce;
+  color: white;
+}
+
+.menu-icon {
+  font-size: 16px;
+}
+
+/* Promotional Banner */
+.promo-banner {
+  background: linear-gradient(135deg, #0071ce 0%, #004c91 100%);
+  color: white;
+  padding: 10px 0;
+  text-align: center;
+  animation: promoPulse 3s ease-in-out infinite;
+}
+
+@keyframes promoPulse {
+  0%, 100% { background: linear-gradient(135deg, #0071ce 0%, #004c91 100%); }
+  50% { background: linear-gradient(135deg, #004c91 0%, #0071ce 100%); }
+}
+
+.promo-content {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.promo-text {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.promo-cta {
+  background: #ffc220;
+  color: #333;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.promo-cta:hover {
+  background: #ff9900;
+  transform: translateY(-1px);
+}
+
+/* Account Dropdown Styles */
+.account-menu {
+  position: relative;
+}
+
+.account-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  width: 450px;
+  z-index: 1000;
+  margin-top: 5px;
+}
+
+.account-dropdown-content {
+  padding: 20px;
+}
+
+.account-signin-section {
+  text-align: center;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 15px;
+}
+
+.signin-btn {
+  background: linear-gradient(135deg, #0071ce 0%, #004c87 100%);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.signin-btn:hover {
+  background: linear-gradient(135deg, #004c87 0%, #0071ce 100%);
+  transform: translateY(-1px);
+}
+
+.signin-icon {
+  font-size: 16px;
+}
+
+.new-customer {
+  font-size: 12px;
+  color: #666;
+  margin: 0;
+}
+
+.start-here {
+  color: #0071ce;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.start-here:hover {
+  color: #004c87;
+}
+
+.account-user-section {
+  text-align: center;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 15px;
+}
+
+.user-welcome {
+  font-size: 14px;
+  font-weight: 600;
+  color: #0071ce;
+  margin-bottom: 10px;
+}
+
+.signout-btn {
+  background: #f8f9fa;
+  color: #666;
+  border: 1px solid #ddd;
+  padding: 8px 20px;
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.signout-btn:hover {
+  background: #e9ecef;
+}
+
+.account-lists {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.account-column h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 10px 0;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
+}
+
+.account-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.account-column li {
+  margin: 5px 0;
+}
+
+.account-column a {
+  color: #666;
+  text-decoration: none;
+  font-size: 13px;
+  display: block;
+  padding: 3px 0;
+}
+
+.account-column a:hover {
+  color: #0071ce;
+  text-decoration: underline;
+}
+
+/* All Departments Dropdown Styles */
+.all-departments {
+  position: relative;
+}
+
+.all-departments-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  width: 800px;
+  z-index: 1000;
+  margin-top: 5px;
+}
+
+.departments-content {
+  padding: 20px;
+}
+
+.departments-main {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin-bottom: 20px;
+}
+
+.departments-column h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #0071ce;
+  margin: 0 0 12px 0;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.departments-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.departments-column li {
+  margin: 8px 0;
+}
+
+.departments-column a {
+  color: #333;
+  text-decoration: none;
+  font-size: 13px;
+  display: block;
+  padding: 5px 8px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.departments-column a:hover {
+  background: #f8f9fa;
+  color: #0071ce;
+  transform: translateX(3px);
+}
+
+.departments-footer {
+  border-top: 1px solid #eee;
+  padding-top: 15px;
+}
+
+.featured-section h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #0071ce;
+  margin: 0 0 10px 0;
+}
+
+.featured-deals {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.featured-deal {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 10px;
+  border-radius: 6px;
+  border-left: 3px solid #0071ce;
+  font-size: 12px;
+}
+
+.deal-badge {
+  display: block;
+  font-weight: 600;
+  color: #0071ce;
+  margin-bottom: 3px;
+}
+
+.deal-text {
+  color: #666;
+}
+
+/* Mobile Responsive */
+@media (max-width: 1024px) {
+  .nav-bottom-content {
+    gap: 15px;
+  }
+  
+  .nav-category-item {
+    font-size: 13px;
+    padding: 6px 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-top {
+    padding: 8px 10px;
+    flex-wrap: wrap;
+  }
+  
+  .walmart-logo {
+    font-size: 24px;
+  }
+  
+  .amazon-search-container {
+    order: 3;
+    width: 100%;
+    margin: 10px 0 0 0;
+  }
+  
+  .nav-right {
+    gap: 10px;
+  }
+  
+  .nav-item {
+    font-size: 10px;
+    padding: 6px 8px;
+    min-width: 50px;
+  }
+  
+  .nav-item-primary {
+    font-size: 11px;
+  }
+  
+  .nav-item-secondary {
+    font-size: 9px;
+  }
+  
+  .delivery-location {
+    display: none;
+  }
+  
+  .nav-bottom-content {
+    gap: 10px;
+    padding: 0 10px;
+  }
+  
+  .nav-category-item {
+    font-size: 12px;
+    padding: 6px 8px;
+  }
+  
+  .promo-content {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .promo-text {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .walmart-logo {
+    font-size: 20px;
+  }
+  
+  .search-category-dropdown {
+    font-size: 11px;
+    padding: 8px 6px;
+    min-width: 45px;
+  }
+  
+  .search-input {
+    font-size: 14px;
+    padding: 8px 10px;
+  }
+  
+  .search-button {
+    padding: 8px 12px;
+  }
+  
+  .cart-text {
+    display: none;
+  }
+  
+  .nav-item-secondary {
+    display: none;
+  }
+  
+  .nav-bottom-content {
+    gap: 5px;
+  }
+  
+  .nav-category-item {
+    font-size: 11px;
+    padding: 4px 6px;
+  }
+}
+
+/* Custom Scrollbar for Secondary Nav */
+.nav-bottom-content::-webkit-scrollbar {
+  height: 4px;
+}
+
+.nav-bottom-content::-webkit-scrollbar-track {
+  background: #232f3e;
+}
+
+.nav-bottom-content::-webkit-scrollbar-thumb {
+  background: #ffc220;
+  border-radius: 2px;
+}
+
+.nav-bottom-content::-webkit-scrollbar-thumb:hover {
+  background: #ff9900;
+}

@@ -1,61 +1,45 @@
 import React, { useState, useEffect } from "react";
 import Auth from "./Auth";
 import ModernShoppingApp from "./ModernShoppingApp";
+import AmazonStyleWalmartApp from "./AmazonStyleWalmartApp";
+import WalmartLogin from './WalmartLogin';
 
 function App() {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState({
+    name: 'Demo User',
+    email: 'demo@retailflow.com',
+    loginTime: new Date().toISOString()
+  }); // Default user - no login required
+  const [loading, setLoading] = useState(false); // Skip loading
+  const [showLogin, setShowLogin] = useState(false); // Skip login screen
 
   useEffect(() => {
-    // Check if user is already logged in
-    const savedUser = localStorage.getItem('walmartUser');
-    if (savedUser) {
-      try {
-        setUser(JSON.parse(savedUser));
-      } catch (error) {
-        console.error('Error parsing saved user:', error);
-        localStorage.removeItem('walmartUser');
-      }
-    }
-    setLoading(false);
+    // Auto-login with demo user - no authentication needed
+    const demoUser = {
+      name: 'Demo User',
+      email: 'demo@retailflow.com',
+      loginTime: new Date().toISOString(),
+      autoLogin: true
+    };
+    setUser(demoUser);
+    localStorage.setItem('walmartUser', JSON.stringify(demoUser));
   }, []);
 
   const handleLoginSuccess = (userData) => {
     setUser(userData);
+    setShowLogin(false);
+    localStorage.setItem('walmartUser', JSON.stringify(userData));
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('walmartUser');
-    setUser(null);
+    // Optional: can refresh to reset demo
+    window.location.reload();
   };
-
-  if (loading) {
-    return (
-      <div style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        minHeight: '100vh',
-        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-        color: 'white',
-        fontSize: '1.5rem',
-        fontWeight: '600'
-      }}>
-        <div style={{ textAlign: 'center' }}>
-          <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🛍️</div>
-          <div>Loading RetailFlow AI...</div>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="App">
-      {!user ? (
-        <Auth onLoginSuccess={handleLoginSuccess} />
-      ) : (
-        <ModernShoppingApp user={user} onLogout={handleLogout} />
-      )}
+      {/* Direct access to main app - no login required */}
+      <AmazonStyleWalmartApp user={user} onLogout={handleLogout} />
     </div>
   );
 }

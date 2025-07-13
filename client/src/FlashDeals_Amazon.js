@@ -317,172 +317,75 @@ function FlashDeals({ onAddToCart, onProductClick }) {
         </div>
       </div>
 
-      {/* Professional Footer - Amazon/Flipkart Style */}
-      <footer className="walmart-footer">
-        {/* Main Footer Content */}
-        <div className="footer-main">
+      {/* Ultra-Compact Modern Footer */}
+      <footer className="modern-footer">
+        <div className="footer-content">
           <div className="footer-container">
             
-            {/* Footer Links Grid */}
-            <div className="footer-grid">
+            {/* Main Footer Row */}
+            <div className="footer-row">
               
-              {/* Get to Know Us */}
-              <div className="footer-column">
-                <h3>Get to Know Us</h3>
-                <ul>
-                  <li><a href="#">About Walmart</a></li>
-                  <li><a href="#">Careers</a></li>
-                  <li><a href="#">Press Releases</a></li>
-                  <li><a href="#">Walmart Cares</a></li>
-                  <li><a href="#">Gift a Smile</a></li>
-                  <li><a href="#">Walmart Science</a></li>
-                </ul>
+              {/* Brand Section */}
+              <div className="footer-brand">
+                <div className="footer-logo">
+                  <span className="logo-icon">🛒</span>
+                  <span className="logo-text">RetailFlow<span className="logo-ai">AI</span></span>
+                </div>
               </div>
 
-              {/* Connect with Us */}
-              <div className="footer-column">
-                <h3>Connect with Us</h3>
-                <ul>
-                  <li><a href="#">Facebook</a></li>
-                  <li><a href="#">Twitter</a></li>
-                  <li><a href="#">Instagram</a></li>
-                </ul>
+              {/* Quick Links */}
+              <div className="footer-links">
+                <a href="#" className="footer-link">Help</a>
+                <a href="#" className="footer-link">Track Order</a>
+                <a href="#" className="footer-link">Returns</a>
+                <a href="#" className="footer-link">Contact</a>
               </div>
 
-              {/* Make Money with Us */}
-              <div className="footer-column">
-                <h3>Make Money with Us</h3>
-                <ul>
-                  <li><a href="#">Sell on Walmart</a></li>
-                  <li><a href="#">Sell under Walmart Accelerator</a></li>
-                  <li><a href="#">Protect and Build Your Brand</a></li>
-                  <li><a href="#">Walmart Global Selling</a></li>
-                  <li><a href="#">Become an Affiliate</a></li>
-                  <li><a href="#">Fulfillment by Walmart</a></li>
-                  <li><a href="#">Advertise Your Products</a></li>
-                  <li><a href="#">Walmart Pay on Merchants</a></li>
-                </ul>
+              {/* Services */}
+              <div className="footer-services">
+                <div className="service-item">
+                  <span className="service-icon">🚚</span>
+                  <span>Free Delivery</span>
+                </div>
+                <div className="service-item">
+                  <span className="service-icon">🔄</span>
+                  <span>Easy Returns</span>
+                </div>
+                <div className="service-item">
+                  <span className="service-icon">🛡️</span>
+                  <span>Secure</span>
+                </div>
               </div>
 
-              {/* Let Us Help You */}
-              <div className="footer-column">
-                <h3>Let Us Help You</h3>
-                <ul>
-                  <li><a href="#">COVID-19 and Walmart</a></li>
-                  <li><a href="#">Your Account</a></li>
-                  <li><a href="#">Returns Centre</a></li>
-                  <li><a href="#">100% Purchase Protection</a></li>
-                  <li><a href="#">Walmart App Download</a></li>
-                  <li><a href="#">Walmart Assistant Download</a></li>
-                  <li><a href="#">Help</a></li>
-                </ul>
+              {/* Social & Apps */}
+              <div className="footer-extras">
+                <div className="social-icons">
+                  <a href="#" className="social-icon">📘</a>
+                  <a href="#" className="social-icon">🐦</a>
+                  <a href="#" className="social-icon">📷</a>
+                </div>
+                <div className="app-badges">
+                  <span className="app-badge">📱</span>
+                  <span className="app-badge">🤖</span>
+                </div>
               </div>
 
             </div>
 
-            {/* Footer Divider */}
-            <div className="footer-divider"></div>
-
-            {/* Footer Services */}
-            <div className="footer-services">
-              <div className="service-item">
-                <div className="service-icon">🚚</div>
-                <div className="service-content">
-                  <h4>Free Delivery</h4>
-                  <p>On orders above ₹499</p>
-                </div>
+            {/* Copyright Row */}
+            <div className="footer-bottom">
+              <div className="copyright">
+                <p>&copy; 2025 RetailFlowAI. All rights reserved.</p>
               </div>
-              <div className="service-item">
-                <div className="service-icon">🔄</div>
-                <div className="service-content">
-                  <h4>Easy Returns</h4>
-                  <p>30-day return policy</p>
-                </div>
-              </div>
-              <div className="service-item">
-                <div className="service-icon">🛡️</div>
-                <div className="service-content">
-                  <h4>Secure Payments</h4>
-                  <p>100% secure payments</p>
-                </div>
-              </div>
-              <div className="service-item">
-                <div className="service-icon">📞</div>
-                <div className="service-content">
-                  <h4>24/7 Support</h4>
-                  <p>Customer support available</p>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        {/* Footer Bottom */}
-        <div className="footer-bottom">
-          <div className="footer-container">
-            
-            {/* Logo and Description */}
-            <div className="footer-brand">
-              <div className="footer-logo">
-                <span className="logo-icon">🛒</span>
-                <span className="logo-text">RetailFlow<span className="logo-ai">AI</span></span>
-              </div>
-              <p className="footer-description">
-                Your trusted online shopping destination with AI-powered recommendations
-              </p>
-            </div>
-
-            {/* Payment Methods */}
-            <div className="payment-methods">
-              <h4>Payment Methods</h4>
-              <div className="payment-icons">
-                <div className="payment-icon">💳</div>
-                <div className="payment-icon">🏦</div>
-                <div className="payment-icon">📱</div>
-                <div className="payment-icon">💰</div>
-              </div>
-            </div>
-
-            {/* App Download */}
-            <div className="app-download">
-              <h4>Download Our App</h4>
-              <div className="app-buttons">
-                <div className="app-button">
-                  <div className="app-icon">📱</div>
-                  <div className="app-text">
-                    <span className="app-store">Download on the</span>
-                    <span className="app-name">App Store</span>
-                  </div>
-                </div>
-                <div className="app-button">
-                  <div className="app-icon">🤖</div>
-                  <div className="app-text">
-                    <span className="app-store">Get it on</span>
-                    <span className="app-name">Google Play</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        {/* Copyright */}
-        <div className="footer-copyright">
-          <div className="footer-container">
-            <div className="copyright-content">
-              <p>&copy; 2025 RetailFlowAI. All rights reserved.</p>
               <div className="footer-legal">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
-                <a href="#">Cookie Policy</a>
-                <a href="#">Accessibility</a>
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+                <a href="#">Cookies</a>
               </div>
             </div>
+
           </div>
         </div>
-
       </footer>
     </div>
   );

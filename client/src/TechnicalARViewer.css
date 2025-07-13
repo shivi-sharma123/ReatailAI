@@ -1,0 +1,560 @@
+/* Technical AR Viewer Styles */
+.technical-ar-viewer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  animation: arViewerSlideIn 0.5s ease-out;
+}
+
+@keyframes arViewerSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Header */
+.ar-viewer-header {
+  background: linear-gradient(135deg, #0f3460, #16537e);
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #00ffff;
+  box-shadow: 0 4px 20px rgba(0, 255, 255, 0.3);
+}
+
+.ar-title-section h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  background: linear-gradient(45deg, #00ffff, #0080ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: titleGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+  from { filter: drop-shadow(0 0 5px rgba(0, 255, 255, 0.5)); }
+  to { filter: drop-shadow(0 0 15px rgba(0, 255, 255, 0.8)); }
+}
+
+.ar-title-section p {
+  margin: 5px 0 0 0;
+  font-size: 14px;
+  color: #b0c4de;
+}
+
+.ar-close-btn {
+  background: #ff4757;
+  border: none;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.ar-close-btn:hover {
+  background: #ff3742;
+  transform: scale(1.1);
+}
+
+/* Main Content */
+.ar-main-content {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+/* Canvas Container */
+.ar-canvas-container {
+  flex: 2;
+  position: relative;
+  background: radial-gradient(circle at center, #001122, #000000);
+}
+
+/* AR Overlay UI */
+.ar-overlay-ui {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Scanning Animation */
+.scanning-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 20, 40, 0.8);
+  pointer-events: none;
+}
+
+.scanning-grid {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border: 2px solid #00ffff;
+  border-radius: 10px;
+  background: 
+    linear-gradient(90deg, transparent 49%, #00ffff 50%, #00ffff 51%, transparent 52%),
+    linear-gradient(transparent 49%, #00ffff 50%, #00ffff 51%, transparent 52%);
+  background-size: 20px 20px;
+  animation: scanningGrid 2s ease-in-out infinite;
+  opacity: 0.6;
+}
+
+@keyframes scanningGrid {
+  0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.6; }
+  50% { transform: scale(1.1) rotate(180deg); opacity: 1; }
+}
+
+.scanning-line {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00ffff, transparent);
+  animation: scanningLine 1.5s ease-in-out infinite;
+  top: 50%;
+}
+
+@keyframes scanningLine {
+  0% { transform: translateY(-150px) scaleX(0); }
+  50% { transform: translateY(0) scaleX(1); }
+  100% { transform: translateY(150px) scaleX(0); }
+}
+
+.scanning-text {
+  margin-top: 200px;
+  text-align: center;
+  color: #00ffff;
+  font-weight: bold;
+}
+
+.scanning-progress {
+  width: 200px;
+  height: 4px;
+  background: rgba(0, 255, 255, 0.3);
+  border-radius: 2px;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.scanning-progress::before {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 100%;
+  background: #00ffff;
+  animation: progressBar 2s ease-in-out infinite;
+}
+
+@keyframes progressBar {
+  0% { transform: translateX(-50px); }
+  100% { transform: translateX(250px); }
+}
+
+/* Measurements Overlay */
+.measurements-overlay {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: rgba(0, 30, 60, 0.9);
+  border: 1px solid #00ffff;
+  border-radius: 10px;
+  padding: 15px;
+  color: white;
+  backdrop-filter: blur(10px);
+  animation: overlayFadeIn 0.5s ease-out;
+}
+
+@keyframes overlayFadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.measurements-overlay h4 {
+  margin: 0 0 10px 0;
+  color: #00ffff;
+  font-size: 16px;
+}
+
+.measurements-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.measurement-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.measurement-item .label {
+  color: #b0c4de;
+}
+
+.measurement-item .value {
+  color: #00ffff;
+  font-weight: bold;
+}
+
+/* Tech Specs Overlay */
+.tech-specs-overlay {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(0, 30, 60, 0.9);
+  border: 1px solid #00ff80;
+  border-radius: 10px;
+  padding: 15px;
+  color: white;
+  backdrop-filter: blur(10px);
+  animation: overlayFadeIn 0.5s ease-out;
+  min-width: 200px;
+}
+
+.tech-specs-overlay h4 {
+  margin: 0 0 10px 0;
+  color: #00ff80;
+  font-size: 16px;
+}
+
+.specs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.spec-item {
+  font-size: 12px;
+  color: #e0e0e0;
+  padding: 4px 0;
+  border-bottom: 1px solid rgba(0, 255, 128, 0.2);
+}
+
+/* Controls Panel */
+.ar-controls-panel {
+  flex: 1;
+  background: linear-gradient(180deg, #1a1a2e, #16213e);
+  border-left: 2px solid #00ffff;
+  padding: 20px;
+  overflow-y: auto;
+  max-width: 350px;
+}
+
+.ar-controls-panel::-webkit-scrollbar {
+  width: 6px;
+}
+
+.ar-controls-panel::-webkit-scrollbar-track {
+  background: #0f1419;
+}
+
+.ar-controls-panel::-webkit-scrollbar-thumb {
+  background: #00ffff;
+  border-radius: 3px;
+}
+
+.controls-section h3 {
+  color: #00ffff;
+  margin: 0 0 20px 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.control-group {
+  margin-bottom: 25px;
+}
+
+.control-group label {
+  display: block;
+  color: #b0c4de;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+/* Mode Switcher */
+.mode-switcher {
+  display: flex;
+  gap: 5px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  padding: 4px;
+}
+
+.mode-switcher button {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #b0c4de;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mode-switcher button.active {
+  background: #00ffff;
+  color: #000;
+  font-weight: bold;
+}
+
+.mode-switcher button:hover:not(.active) {
+  background: rgba(0, 255, 255, 0.2);
+  color: #00ffff;
+}
+
+/* AR Features Grid */
+.ar-features-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.ar-feature-btn {
+  background: rgba(0, 30, 60, 0.8);
+  border: 1px solid #334155;
+  color: #b0c4de;
+  padding: 10px 8px;
+  border-radius: 8px;
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.ar-feature-btn:hover {
+  border-color: #00ffff;
+  background: rgba(0, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.ar-feature-btn.active {
+  background: rgba(0, 255, 255, 0.2);
+  border-color: #00ffff;
+  color: #00ffff;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.action-btn {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.action-btn.analyze {
+  background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+}
+
+.action-btn.camera {
+  background: linear-gradient(135deg, #4ecdc4, #44a08d);
+}
+
+.action-btn.particles {
+  background: linear-gradient(135deg, #a8edea, #fed6e3);
+  color: #333;
+}
+
+/* Performance Metrics */
+.performance-metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+
+.metric {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid #334155;
+  border-radius: 6px;
+  padding: 8px;
+  text-align: center;
+}
+
+.metric-label {
+  display: block;
+  font-size: 10px;
+  color: #b0c4de;
+  margin-bottom: 2px;
+}
+
+.metric-value {
+  display: block;
+  font-size: 14px;
+  color: #00ffff;
+  font-weight: bold;
+}
+
+/* Product Info Section */
+.product-info-section {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #334155;
+}
+
+.product-info-section h3 {
+  color: #00ff80;
+  margin: 0 0 15px 0;
+  font-size: 16px;
+}
+
+.product-details h4 {
+  color: white;
+  margin: 0 0 10px 0;
+  font-size: 16px;
+}
+
+.product-description {
+  color: #b0c4de;
+  font-size: 13px;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+.product-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #e0e0e0;
+}
+
+.stat-icon {
+  font-size: 14px;
+}
+
+/* Footer Actions */
+.ar-footer-actions {
+  background: linear-gradient(135deg, #2c3e50, #3498db);
+  padding: 15px 20px;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  border-top: 2px solid #00ffff;
+}
+
+.footer-btn {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 150px;
+}
+
+.footer-btn.primary {
+  background: linear-gradient(135deg, #ffc220, #ff9900);
+  color: #333;
+}
+
+.footer-btn.secondary {
+  background: transparent;
+  color: white;
+  border: 2px solid #00ffff;
+}
+
+.footer-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.footer-btn.primary:hover {
+  box-shadow: 0 4px 15px rgba(255, 194, 32, 0.4);
+}
+
+.footer-btn.secondary:hover {
+  background: rgba(0, 255, 255, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .ar-main-content {
+    flex-direction: column;
+  }
+  
+  .ar-canvas-container {
+    height: 60vh;
+  }
+  
+  .ar-controls-panel {
+    max-width: 100%;
+    height: 40vh;
+    border-left: none;
+    border-top: 2px solid #00ffff;
+  }
+  
+  .ar-footer-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .footer-btn {
+    min-width: auto;
+  }
+  
+  .measurements-overlay,
+  .tech-specs-overlay {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    margin: 10px;
+  }
+}

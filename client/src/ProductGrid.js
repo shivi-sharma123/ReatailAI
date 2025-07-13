@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { productDatabase, productCategories } from './productDatabase';
 import AdvancedFilters from './AdvancedFilters';
-import './ProductGrid.css';
+import './ProductGrid_Modern.css';
 
 const ProductGrid = ({ 
   onAddToCart, 
@@ -21,6 +21,11 @@ const ProductGrid = ({
   const [priceRange, setPriceRange] = useState([0, 2000]);
   const [showFilters, setShowFilters] = useState(false);
   const [ratingFilter, setRatingFilter] = useState(0);
+  const [hoveredProduct, setHoveredProduct] = useState(null);
+  const [imageErrors, setImageErrors] = useState({});
+  const [selectedColors, setSelectedColors] = useState({}); // Track selected colors for each product
+  const [selectedSizes, setSelectedSizes] = useState({}); // Track selected sizes for each product
+  const [currentImageIndex, setCurrentImageIndex] = useState({}); // Track current image for each product
 
   // Filter and sort products
   useEffect(() => {
@@ -165,6 +170,86 @@ const ProductGrid = ({
     return Math.round(((original - current) / original) * 100);
   };
 
+  // Color changing functionality
+  const handleColorChange = (productId, color) => {
+    setSelectedColors(prev => ({
+      ...prev,
+      [productId]: color
+    }));
+  };
+
+  // Size selection functionality
+  const handleSizeChange = (productId, size) => {
+    setSelectedSizes(prev => ({
+      ...prev,
+      [productId]: size
+    }));
+  };
+
+  // Image navigation functionality
+  const handleImageNavigation = (productId, direction) => {
+    const product = productDatabase.find(p => p.id === productId);
+    if (!product.images || product.images.length <= 1) return;
+
+    setCurrentImageIndex(prev => {
+      const currentIndex = prev[productId] || 0;
+      let newIndex;
+      
+      if (direction === 'next') {
+        newIndex = (currentIndex + 1) % product.images.length;
+      } else {
+        newIndex = currentIndex === 0 ? product.images.length - 1 : currentIndex - 1;
+      }
+      
+      return {
+        ...prev,
+        [productId]: newIndex
+      };
+    });
+  };
+
+  // Get current product image based on selections
+  const getCurrentImage = (product) => {
+    const imageIndex = currentImageIndex[product.id] || 0;
+    
+    if (hoveredProduct === product.id && product.images && product.images.length > 1) {
+      return product.images[imageIndex];
+    }
+    
+    return product.image_url || product.images?.[0];
+  };
+
+  // Get product price with color/size modifiers
+  const getProductPrice = (product) => {
+    let basePrice = product.price;
+    const selectedColor = selectedColors[product.id];
+    const selectedSize = selectedSizes[product.id];
+
+    // Add color price modifier
+    if (selectedColor && product.colors) {
+      const colorObj = product.colors.find(c => {
+        const colorName = typeof c === 'object' ? c.name : c;
+        return colorName === selectedColor;
+      });
+      if (colorObj && typeof colorObj === 'object' && colorObj.price_modifier) {
+        basePrice += colorObj.price_modifier;
+      }
+    }
+
+    // Add size price modifier
+    if (selectedSize && product.sizes) {
+      const sizeObj = product.sizes.find(s => {
+        const sizeName = typeof s === 'object' ? s.size : s;
+        return sizeName === selectedSize;
+      });
+      if (sizeObj && typeof sizeObj === 'object' && sizeObj.price_modifier) {
+        basePrice += sizeObj.price_modifier;
+      }
+    }
+
+    return basePrice;
+  };
+
   return (
     <div className="product-grid-container">
       {/* Advanced Filters Component */}
@@ -288,18 +373,80 @@ const ProductGrid = ({
             </div>
           ) : (
             filteredProducts.map(product => (
-              <div key={product.id} className="product-card">
-                {/* Product Image */}
-                <div className="product-image-container">
+              <div key={product.id} className="product-card enhanced-card">
+                {/* Product Image Gallery */}
+                <div className="product-image-container enhanced-image-container"
+                     onMouseEnter={() => setHoveredProduct(product.id)}
+                     onMouseLeave={() => setHoveredProduct(null)}>
                   <img
-                    src={product.image_url}
+                    src={getCurrentImage(product)}
                     alt={product.name}
-                    className="product-image"
+                    className="product-image enhanced-image"
                     onClick={() => onProductClick && onProductClick(product)}
                     onError={(e) => {
-                      e.target.src = "https://via.placeholder.com/300x300/e5e7eb/6b7280?text=Product";
+                      const fallbackImage = "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=400&fit=crop";
+                      if (e.target.src !== fallbackImage) {
+                        e.target.src = fallbackImage;
+                      }
                     }}
                   />
+                  
+                  {/* Image Navigation Arrows */}
+                  {product.images && product.images.length > 1 && hoveredProduct === product.id && (
+                    <>
+                      <button 
+                        className="image-nav-btn prev-btn"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleImageNavigation(product.id, 'prev');
+                        }}
+                      >
+                        ‹
+                      </button>
+                      <button 
+                        className="image-nav-btn next-btn"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleImageNavigation(product.id, 'next');
+                        }}
+                      >
+                        ›
+                      </button>
+                    </>
+                  )}
+                  
+                  {/* Image Gallery Indicators */}
+                  {product.images && product.images.length > 1 && (
+                    <div className="image-indicators">
+                      {product.images.map((_, index) => (
+                        <div 
+                          key={index}
+                          className={`indicator ${index === (currentImageIndex[product.id] || 0) ? 'active' : ''}`}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setCurrentImageIndex(prev => ({
+                              ...prev,
+                              [product.id]: index
+                            }));
+                          }}
+                        />
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Multiple Images Badge */}
+                  {product.images && product.images.length > 1 && (
+                    <div className="multiple-images-badge">
+                      <span className="camera-icon">📷</span>
+                      {product.images.length}
+                    </div>
+                  )}
+
+                  {/* High Quality Badge */}
+                  <div className="quality-badge">
+                    <span className="quality-icon">📸</span>
+                    HD
+                  </div>
                   
                   {/* Discount Badge */}
                   {product.originalPrice && product.originalPrice > product.price && (
@@ -313,6 +460,13 @@ const ProductGrid = ({
                     <div className="ar-badge">
                       <span className="ar-icon">🥽</span>
                       AR
+                    </div>
+                  )}
+
+                  {/* New Badge for Recent Products */}
+                  {product.id > 200 && (
+                    <div className="new-badge">
+                      ✨ NEW
                     </div>
                   )}
 
@@ -367,11 +521,64 @@ const ProductGrid = ({
                   {/* Price */}
                   <div className="product-pricing">
                     <div className="current-price">
-                      {formatPrice(product.price)}
+                      {formatPrice(getProductPrice(product))}
                     </div>
                     {product.originalPrice && product.originalPrice > product.price && (
                       <div className="original-price">
                         {formatPrice(product.originalPrice)}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Color and Size Options */}
+                  <div className="product-options">
+                    {product.colors && product.colors.length > 0 && (
+                      <div className="color-options">
+                        <h4>Colors:</h4>
+                        <div className="colors-container">
+                          {product.colors.map((color, index) => {
+                            const colorName = typeof color === 'object' ? color.name : color;
+                            const colorHex = typeof color === 'object' ? color.hex : color.toLowerCase();
+                            const colorStyle = colorHex.startsWith('#') ? 
+                              { backgroundColor: colorHex } : 
+                              { backgroundColor: colorName.toLowerCase() };
+                            
+                            return (
+                              <div 
+                                key={index}
+                                className={`color-swatch ${selectedColors[product.id] === colorName ? 'selected' : ''}`}
+                                style={colorStyle}
+                                onClick={() => handleColorChange(product.id, colorName)}
+                                title={colorName}
+                              />
+                            );
+                          })}
+                        </div>
+                        {selectedColors[product.id] && (
+                          <div className="selected-color-name">
+                            Selected: {selectedColors[product.id]}
+                          </div>
+                        )}
+                      </div>
+                    )}
+
+                    {product.sizes && product.sizes.length > 0 && (
+                      <div className="size-options">
+                        <h4>Sizes:</h4>
+                        <div className="sizes-container">
+                          {product.sizes.map((size, index) => {
+                            const sizeName = typeof size === 'object' ? size.size : size;
+                            return (
+                              <div 
+                                key={index}
+                                className={`size-swatch ${selectedSizes[product.id] === sizeName ? 'selected' : ''}`}
+                                onClick={() => handleSizeChange(product.id, sizeName)}
+                              >
+                                {sizeName}
+                              </div>
+                            );
+                          })}
+                        </div>
                       </div>
                     )}
                   </div>
