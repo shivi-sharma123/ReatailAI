@@ -2,9 +2,19 @@ import React, { useState, useEffect, useRef } from 'react';
 import './Enhanced3DARViewer.css';
 
 const Enhanced3DARViewer = ({ product, isVisible, onClose, onAddToCart }) => {
+  // Helper function to convert price to number
+  const parsePrice = (price) => {
+    if (typeof price === 'number') return price;
+    if (typeof price === 'string') {
+      // Remove dollar sign and commas, then parse
+      return parseFloat(price.replace(/[$,]/g, '')) || 0;
+    }
+    return 0;
+  };
+
   const [selectedColor, setSelectedColor] = useState(null);
   const [selectedSize, setSelectedSize] = useState(null);
-  const [currentPrice, setCurrentPrice] = useState(product?.price || 0);
+  const [currentPrice, setCurrentPrice] = useState(parsePrice(product?.price) || 0);
   const [is3DMode, setIs3DMode] = useState(true);
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
   const [scale, setScale] = useState(1);
@@ -27,9 +37,9 @@ const Enhanced3DARViewer = ({ product, isVisible, onClose, onAddToCart }) => {
       // Set default size
       if (product.sizes && product.sizes.length > 0) {
         setSelectedSize(product.sizes[0]);
-        setCurrentPrice(product.price + (product.sizes[0].price_modifier || 0));
+        setCurrentPrice(parsePrice(product.price) + parseFloat(product.sizes[0].price_modifier || 0));
       } else {
-        setCurrentPrice(product.price);
+        setCurrentPrice(parsePrice(product.price) || 0);
       }
       
       // Simulate loading time for 3D model
@@ -40,7 +50,7 @@ const Enhanced3DARViewer = ({ product, isVisible, onClose, onAddToCart }) => {
   // Update price when size changes
   useEffect(() => {
     if (product && selectedSize) {
-      setCurrentPrice(product.price + (selectedSize.price_modifier || 0));
+      setCurrentPrice(parsePrice(product.price) + parseFloat(selectedSize.price_modifier || 0));
     }
   }, [selectedSize, product]);
 
@@ -254,7 +264,7 @@ const Enhanced3DARViewer = ({ product, isVisible, onClose, onAddToCart }) => {
                 <span className="rating-value">{product.rating}</span>
               </div>
               <div className="product-price">
-                <span className="current-price">${currentPrice.toFixed(2)}</span>
+                <span className="current-price">${(currentPrice || 0).toFixed(2)}</span>
                 {selectedSize?.price_modifier > 0 && (
                   <span className="price-modifier">+${selectedSize.price_modifier}</span>
                 )}
@@ -349,7 +359,7 @@ const Enhanced3DARViewer = ({ product, isVisible, onClose, onAddToCart }) => {
                   });
                 }}
               >
-                🛒 Add to Cart - ${currentPrice.toFixed(2)}
+                🛒 Add to Cart - ${(currentPrice || 0).toFixed(2)}
               </button>
               
               <div className="secondary-actions">
